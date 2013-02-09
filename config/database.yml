@@ -1,0 +1,18 @@
+defaults: &defaults
+  adapter: postgresql
+  encoding: unicode
+  min_messages: warning
+
+development:
+  <<: *defaults
+  database: loopback_development
+  pool: 5
+  username: postgres
+  password:
+
+test:
+  <<: *defaults
+  database: loopback_test
+  pool: 5
+  username: postgres
+  password:
