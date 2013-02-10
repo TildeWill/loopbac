@@ -66,6 +66,3 @@ Loopback::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 end
-
-CLIENT_ID = "205817886325-0bc57cppt4t4fm8dnigdrcoqaakk09au.apps.googleusercontent.com"
-CLIENT_SECRET = "WrqWHHDkU-pDAUT8vspllqhn"
