@@ -17,6 +17,4 @@ staging:
     BUNDLE_WITHOUT: "development:test"
     RACK_ENV: staging
     RAILS_ENV: staging
-    CLIENT_ID: "205817886325-0bc57cppt4t4fm8dnigdrcoqaakk09au.apps.googleusercontent.com"
-    CLIENT_SECRET: "WrqWHHDkU-pDAUT8vspllqhn"
   addons:
