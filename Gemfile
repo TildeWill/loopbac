@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'bootstrap-sass'
-#gem 'devise'
+gem 'devise'
 gem 'haml'
 gem 'jquery-rails'
 gem 'omniauth-google-oauth2'
