@@ -36,3 +36,6 @@ Loopback::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 end
+
+CLIENT_ID = "205817886325.apps.googleusercontent.com"
+CLIENT_SECRET = "56wS44B-Lho9bvHixMIEKf37"
