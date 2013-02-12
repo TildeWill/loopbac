@@ -1,7 +1,6 @@
 %h2 Your Circles
 #circles
-  - @circles.each do |circle|
-    .circle{id: circle.name.parameterize, 'data-text' => circle.name, 'data-link' => circle_path(circle)}
+  = render @circles
 
 :javascript
   $('.circle').GPlusCircle();
