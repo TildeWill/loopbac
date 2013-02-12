@@ -37,8 +37,6 @@
           %a.brand{:href => "#"} Loopb.ac
           .nav-collapse.collapse
             %p.navbar-text.pull-right
-              -#%a.navbar-link{:href => "#"}
-              -#  = image_tag(current_user.image_url, width: 30, height: 30)
               - if user_signed_in?
                 %span.dropdown
                   %a.navbar-link{href: "#"}
@@ -46,12 +44,11 @@
                     = image_tag(current_user.image_url, width: 30, height: 30)
               - else
                 = link_to("Sign In", user_omniauth_authorize_path(:google_oauth2), class: 'navbar-link')
-
             %ul.nav
               %li
                 %a{:href => "#"} Dashboard
               %li
-                %a{:href => "#about"} My Team
+                =link_to('My Circles', circles_path)
               %li
                 %a{:href => "#contact"} My Templates
     .container-fluid

@@ -1,4 +1,4 @@
-Loopback::Application.routes.draw do
+Loopbac::Application.routes.draw do
 
   devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks"}
   devise_scope :user do
@@ -6,6 +6,7 @@ Loopback::Application.routes.draw do
     get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   end
 
+  resources :circles
+
   root :to => 'welcome#index'
-  resources :employees
 end

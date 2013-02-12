@@ -1,0 +1,5 @@
+%h2 Your Circles
+#circles
+  - @circles.each do |circle|
+    :javascript
+      $('#circles').GPlusCircle({id: '#{circle.name.parameterize}', text: '#{circle.name}'});

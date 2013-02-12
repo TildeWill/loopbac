@@ -5,14 +5,14 @@ defaults: &defaults
 
 development:
   <<: *defaults
-  database: loopback_development
+  database: loopbac_development
   pool: 5
   username: postgres
   password:
 
 test:
   <<: *defaults
-  database: loopback_test
+  database: loopbac_test
   pool: 5
   username: postgres
   password:

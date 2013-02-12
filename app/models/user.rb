@@ -5,7 +5,11 @@ class User < ActiveRecord::Base
   attr_accessible :email, :first_name, :last_name, :full_name, :image_url, :password, :uid
   attr_accessor :password
 
-  def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
+  has_many :circles, through: :memberships
+  has_many :memberships
+  #has_many :teammates, class_name: 'User', through: :circles
+
+  def self.find_for_google_oauth2(access_token)
     data = access_token.info
     user = User.find_by_uid(access_token.uid)
 

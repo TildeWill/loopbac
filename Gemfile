@@ -16,3 +16,10 @@ end
 group :development do
   gem 'heroku_san'
 end
+
+group :test do
+  gem 'capybara-webkit'
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
+end
