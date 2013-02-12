@@ -215,7 +215,7 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
   #Note: If you want to be prompted for permission every time, set approval_prompt: "force", otherwise leave it empty.
-  config.omniauth :google_oauth2, "205817886325.apps.googleusercontent.com", "56wS44B-Lho9bvHixMIEKf37", {access_type: "offline", approval_prompt: ""}
+  config.omniauth :google_oauth2, "205817886325.apps.googleusercontent.com", "56wS44B-Lho9bvHixMIEKf37", access_type: "offline" #, approval_prompt: "force", scope: 'userinfo.email,userinfo.profile,plus.me'
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

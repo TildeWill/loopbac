@@ -16,7 +16,7 @@
         id:'inner_' + $circle.attr('id'),
         href:$circle.data('link'),
         title:$circle.data('tooltip'),
-        text:$circle.data('text')
+        text:$circle.data('label') + " (" + $circle.data('user-count') + ")"
       }).appendTo($circle);
       inner.addClass('inner-circle');
 
