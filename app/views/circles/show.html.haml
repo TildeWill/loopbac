@@ -1,0 +1,9 @@
+= @circle.name
+= "(#{@circle.users.count})"
+
+%ul
+  - @circle.users.each do |user|
+    %li= user.full_name
+
+:javascript
+  $('.circle').GPlusCircle();

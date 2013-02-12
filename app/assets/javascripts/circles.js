@@ -1,47 +1,33 @@
 (function ($) {
-  $.fn.GPlusCircle = function (options) {
-    var settings = $.extend({
-      'id':'circle',
-      'text':'circle',
-      'tooltip':'circle',
-      'link':'http://www.google.com'
-    }, options);
-
+  $.fn.GPlusCircle = function() {
     return this.each(function () {
+      var $circle = $(this);
+      var outer = $('<div/>', {
+        id:'outer_' + $circle.attr('id')
+      }).appendTo($circle);
 
-      var opt = options;
-
-      // 'circle1','#circles'
-      var circle = jQuery('<div/>', {
-        id:opt.id
-      }).appendTo(this);
-      circle.addClass('circle');
-
-      var outer = jQuery('<div/>', {
-        id:'outer_' + opt.id
-      }).appendTo(circle);
       outer.addClass('outer-circle');
-      var middle = jQuery('<div/>', {
-        id:'middle_' + opt.id
-      }).appendTo(circle);
+      var middle = $('<div/>', {
+        id:'middle_' + $circle.attr('id')
+      }).appendTo($circle);
+
       middle.addClass('middle-circle');
-      var inner = jQuery('<div/>', {
-        id:'inner_' + opt.id,
-        href:opt.link,
-        title:opt.tooltip,
-        rel:'external',
-        text:opt.text
-      }).appendTo(circle);
+      var inner = $('<a/>', {
+        id:'inner_' + $circle.attr('id'),
+        href:$circle.data('link'),
+        title:$circle.data('tooltip'),
+        text:$circle.data('text')
+      }).appendTo($circle);
       inner.addClass('inner-circle');
 
-      circle.mouseover(function () {
-        $('#outer_' + opt.id).addClass('hover');
-        $('#middle_' + opt.id).addClass('hover');
+      $($circle).mouseover(function () {
+        $('#outer_' + $circle.attr('id')).addClass('hover');
+        $('#middle_' + $circle.attr('id')).addClass('hover');
       });
-      circle.mouseout(function () {
-        $('#outer_' + opt.id).removeClass('hover');
-        $('#middle_' + opt.id).removeClass('hover');
+      $($circle).mouseout(function () {
+        $('#outer_' + $circle.attr('id')).removeClass('hover');
+        $('#middle_' + $circle.attr('id')).removeClass('hover');
       });
     });
   }
-})(jQuery);
+})($);
