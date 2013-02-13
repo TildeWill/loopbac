@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'bootstrap-sass'
 gem 'devise'
+gem 'google-api-client'
 gem 'haml'
 gem 'jquery-rails'
 gem 'omniauth-google-oauth2'
