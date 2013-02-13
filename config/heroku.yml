@@ -18,3 +18,12 @@ staging:
     RACK_ENV: staging
     RAILS_ENV: staging
   addons:
+
+production:
+  stack: cedar
+  app: loopbac-production
+  config:
+    BUNDLE_WITHOUT: "development:test"
+    RACK_ENV: production
+    RAILS_ENV: production
+  addons:
