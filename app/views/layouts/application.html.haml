@@ -40,10 +40,7 @@
               - if user_signed_in?
                 %span.dropdown
                   %a.navbar-link{href: "#"}
-                    = link_to("Sign out", destroy_user_session_path, class: 'navbar-link')
                     = image_tag(current_user.image_url, width: 30, height: 30)
-              - else
-                = link_to("Sign In", user_omniauth_authorize_path(:google_oauth2), class: 'navbar-link')
             %ul.nav
               %li
                 %a{:href => "#"} Dashboard

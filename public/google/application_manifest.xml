@@ -26,14 +26,14 @@
   <!-- Show this link in Google's universal navigation for all users -->
   <Extension id="navLink" type="link">
     <Name>Loopb.ac</Name>
-    <Url>https://www.loopb.ac/home?from=google&amp;domain=${DOMAIN_NAME}</Url>
-    <!-- This app also uses the Calendar API -->
+    <Url>http://localhost:3000/auth/google_apps?domain=${DOMAIN_NAME}</Url>
     <Scope ref="calendarFeed"/>
+    <Scope ref="contactFeed"/>
   </Extension>
 
   <!-- Declare our OpenID realm so our app is white listed -->
   <Extension id="realm" type="openIdRealm">
-    <Url>https://loopb.ac</Url>
+    <Url>http://localhost:3000</Url>
   </Extension>
 
   <!-- Need access to the Calendar feed -->
@@ -42,45 +42,11 @@
     <Reason>This application creates calendar events for one on ones and reviews</Reason>
   </Scope>
 
-  <!-- Need access to the Profiles feed -->
-  <Scope id="provisionUserFeed">
-    <Url>https://apps-apis.google.com/a/feeds/user/#readonly</Url>
-    <Reason>This application provides autocomplete functionality when collaborating</Reason>
-  </Scope>
-
-  <!-- Gmail contextual gadget extractor -->
-
-  <Extension id="extractor" type="contextExtractor">
-    <Name>Hello World</Name>
-    <Url>google.com:HelloWorld</Url>
-    <Triggers ref="gadget"/>
-    <Scope ref="emailSubject"/>
-    <Scope ref="emailBody"/>
-    <Container name="mail"/>
-  </Extension>
-
-  <!-- Gmail contextual gadget -->
-
-  <Extension id="gadget" type="gadget">
-    <Name>Hello World Gmail contextual gadget</Name>
-    <Url>http://example.com/gadgets/hello_world_gadget.xml</Url>
-    <Container name="mail"/>
-  </Extension>
-
-  <!-- Gmail contextual gadget scopes -->
-
-  <Scope id="emailSubject">
-    <Url>tag:google.com,2010:auth/contextual/extractor/SUBJECT</Url>
-    <Reason>This application searches the Subject: line of each email
-      for the text "Hello World."
-    </Reason>
-  </Scope>
-
-  <Scope id="emailBody">
-    <Url>tag:google.com,2010:auth/contextual/extractor/BODY</Url>
-    <Reason>This application searches the message body of each email
-      for the text "Hello World."
-    </Reason>
+  <!-- Need access to the user profiles in the domain -->
+  <Scope id="contactFeed">
+    <!--<Url>https://apps-apis.google.com/a/feeds/user/#readonly</Url>-->
+    <Url>https://www.google.com/m8/feeds/</Url>
+    <Reason>This application provides autocomplete functionality when collaborating and updates anniversaries and notes for a contact</Reason>
   </Scope>
 
   <!-- Configures extensions available for the standard edition of the application. -->
@@ -95,8 +61,6 @@
     <Name>Pro Edition</Name>
     <Extension ref="navLink"/>
     <Extension ref="realm"/>
-    <Extension ref="gadget"/>
-    <Extension ref="extractor"/>
   </Edition>
 
 </ApplicationManifest>

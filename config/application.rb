@@ -68,3 +68,6 @@ module Loopbac
     config.assets.initialize_on_precompile = false
   end
 end
+
+GOOGLE_APP_ID = "205817886325.apps.googleusercontent.com"
+GOOGLE_APP_SECRET = "56wS44B-Lho9bvHixMIEKf37"
