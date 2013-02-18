@@ -24,6 +24,10 @@ class User < ActiveRecord::Base
   #  user
   #end
 
+  def image_url
+    super.blank? ? "/assets/missing_profile.png" : super
+  end
+
   def self.create_with_omniauth(auth)
     create! do |user|
       user.uid = auth["uid"]

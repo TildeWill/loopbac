@@ -26,7 +26,7 @@
   <!-- Show this link in Google's universal navigation for all users -->
   <Extension id="navLink" type="link">
     <Name>Loopb.ac</Name>
-    <Url>http://localhost:3000/auth/google_apps?domain=${DOMAIN_NAME}</Url>
+    <Url>http://localhost:3000/auth/google_oauth2?domain=${DOMAIN_NAME}</Url>
     <Scope ref="calendarFeed"/>
     <Scope ref="contactFeed"/>
   </Extension>

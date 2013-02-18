@@ -6,10 +6,8 @@ gem 'haml'
 gem 'informal'
 gem 'jquery-rails'
 gem 'pg'
-gem 'omniauth-openid'
-gem 'omniauth-google-apps'
+gem "omniauth-google-oauth2"
 gem 'rails'
-gem 'ruby-openid-apps-discovery'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

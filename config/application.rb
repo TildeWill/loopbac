@@ -69,5 +69,5 @@ module Loopbac
   end
 end
 
-GOOGLE_APP_ID = "205817886325.apps.googleusercontent.com"
-GOOGLE_APP_SECRET = "56wS44B-Lho9bvHixMIEKf37"
+GOOGLE_APP_ID = "155595858581.apps.googleusercontent.com"
+GOOGLE_APP_SECRET = "AoYxa1533UP_M2-0YDHoYw7K"
