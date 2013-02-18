@@ -1,3 +1,9 @@
+PATH
+  remote: ../google_apps
+  specs:
+    google_apps (0.5)
+      libxml-ruby (>= 2.2.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -69,6 +75,7 @@ GEM
       heroku-api (>= 0.1.2)
       rake
     hike (1.2.1)
+    http_logger (0.3.3)
     httpauth (0.2.0)
     i18n (0.6.1)
     informal (0.1.0)
@@ -80,6 +87,7 @@ GEM
     json (1.7.6)
     jwt (0.1.5)
       multi_json (>= 1.0)
+    libxml-ruby (2.6.0)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -188,8 +196,10 @@ DEPENDENCIES
   capybara-webkit
   factory_girl_rails
   faker
+  google_apps!
   haml
   heroku_san
+  http_logger
   informal
   jquery-rails
   omniauth-google-oauth2

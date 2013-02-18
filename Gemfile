@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'bootstrap-sass'
-#gem 'google_apps', path: '../google_apps' #github: 'TildeWill/google_apps'
+gem 'google_apps', path: '../google_apps' #github: 'TildeWill/google_apps'
 gem 'haml'
 gem 'informal'
 gem 'jquery-rails'
@@ -16,6 +16,7 @@ end
 
 group :development do
   gem 'heroku_san'
+  gem 'http_logger'
 end
 
 group :test do

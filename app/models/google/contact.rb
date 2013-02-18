@@ -4,11 +4,9 @@ module Google
     attr_accessor :full_name, :email, :image_url
 
     def self.get_all(domain, authorization_token)
-      transporter = GoogleApps::Transport.new(domain)
-      #transporter.authenticate('will@loopb.ac', 'hats4HEADS')
-      transporter.token = authorization_token
-      users = transporter.get_users
-      return [users]
+      client = GoogleApps::Transport.new(domain, authorization_token)
+      users = client.get_users
+      return users
     end
 
     def initialize(options)

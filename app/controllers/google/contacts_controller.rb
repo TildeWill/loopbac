@@ -1,5 +1,3 @@
-require 'google/api_client'
-
 module Google
   class ContactsController < ApplicationController
     respond_to :json
