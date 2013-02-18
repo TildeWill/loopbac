@@ -6,6 +6,4 @@ Has references to the Ruby Client and code examples
 http://googlecode.blogspot.com/2011/10/upcoming-changes-to-oauth-20-endpoint.html
 
 = OpenID, OmniAuth, GoogleApps
-http://matt.aimonetti.net/posts/2013/01/30/omniauth-and-google-apps/
-https://github.com/intridea/omniauth/wiki/OpenID-and-Google-Apps
 https://developers.google.com/oauthplayground
