@@ -1,13 +1,16 @@
 source 'https://rubygems.org'
 
 gem 'bootstrap-sass'
-gem 'google_apps', path: '../google_apps' #github: 'TildeWill/google_apps'
+#gem 'google_apps', path: '../google_apps'
+gem 'google_apps', github: 'TildeWill/google_apps'
 gem 'haml'
 gem 'informal'
 gem 'jquery-rails'
 gem 'pg'
-gem "omniauth-google-oauth2"
+gem 'omniauth-google-oauth2'
 gem 'rails'
+gem 'responders'
+gem 'simple_form'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

@@ -12,3 +12,22 @@
  *= require_tree .
  */
 @import "bootstrap";
+@import "colors";
+
+body, p, input, textarea, table, td {
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-transform: lowercase;
+  color: $blue;
+  &:first-letter {
+    color: $green;
+  }
+}
+
+em {
+  color: $blue;
+  font-weight: bold;
+}
+

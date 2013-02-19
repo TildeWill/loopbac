@@ -11,20 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130216185205) do
+ActiveRecord::Schema.define(:version => 20130218063521) do
 
   create_table "circles", :force => true do |t|
     t.string   "name"
-    t.integer  "creator_id"
+    t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "memberships", :force => true do |t|
     t.integer  "circle_id"
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "contact_email"
   end
 
   create_table "sessions", :force => true do |t|
