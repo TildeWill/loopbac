@@ -26,14 +26,14 @@
   <!-- Show this link in Google's universal navigation for all users -->
   <Extension id="navLink" type="link">
     <Name>Loopb.ac</Name>
-    <Url>http://localhost:3000/auth/google_oauth2?domain=${DOMAIN_NAME}</Url>
+    <Url>http://loopb.ac/auth/google_oauth2?domain=${DOMAIN_NAME}</Url>
     <Scope ref="contactFeed"/>
     <Scope ref="userFeed"/>
   </Extension>
 
   <!-- Declare our OpenID realm so our app is white listed -->
   <Extension id="realm" type="openIdRealm">
-    <Url>http://localhost:3000</Url>
+    <Url>http://loopb.ac</Url>
   </Extension>
 
   <!-- Need access to the user profiles in the domain -->
