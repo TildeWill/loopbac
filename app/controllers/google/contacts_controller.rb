@@ -1,8 +1,9 @@
 module Google
   class ContactsController < ApplicationController
-    respond_to :json
+    respond_to :json, :html
     def index
-      respond_with Google::Contact.get_all(current_user.domain, current_user.authentication_token)
+      contacts = Google::Contact.get_all(current_user.domain, current_user.authentication_token)
+      @contacts = Google::ContactDecorator.decorate_collection(contacts)
     end
   end
 end

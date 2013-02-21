@@ -42,14 +42,13 @@
               - if user_signed_in?
                 %span.dropdown
                   %a.navbar-link{href: "#"}
-                    = image_tag(current_user.image_url, width: 30, height: 30)
+                    = image_tag(current_user.image_url, class: 'profile-icon')
             %ul.nav
               %li
-                %a{:href => "#"} Dashboard
+                = link_to("Dashboard", root_path)
               %li
-                =link_to('My Circles', circles_path)
-              %li
-                %a{:href => "#contact"} My Templates
+                =link_to('Contacts', google_contacts_path)
+
     .container-fluid
       .row-fluid
         .span12
