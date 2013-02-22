@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130218063521) do
+ActiveRecord::Schema.define(:version => 20130222022152) do
 
   create_table "circles", :force => true do |t|
     t.string   "name"
@@ -55,7 +55,8 @@ ActiveRecord::Schema.define(:version => 20130218063521) do
     t.string   "full_name"
     t.text     "image_url"
     t.string   "uid"
-    t.string   "authentication_token"
+    t.string   "oauth2_token"
+    t.string   "refresh_token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
