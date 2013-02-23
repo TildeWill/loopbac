@@ -1,0 +1,8 @@
+%h2 Kickoff a new loop
+= simple_form_for @loop_kickoff do |f|
+  = f.input :subject_email,
+    as: :contact_picker,
+    input_html: {data: {contacts: "[#{current_contacts.map(&:to_autocomplete_json).join(",")}]"}}
+  = f.input :reviewer_emails, as: :multi_contact_picker,
+    input_html: {data: {contacts: "[#{current_contacts.map(&:to_autocomplete_json).join(",")}]"}, value: @loop_kickoff.reviewer_emails}
+  = f.submit nil, class: 'btn'

@@ -2,8 +2,7 @@ require 'spec_helper'
 
 describe User do
   describe 'relationships' do
-    it { should have_many(:circles) }
-    it { should have_many(:teammates).through(:circles) }
+    it { should have_many(:loops) }
   end
 
   describe '#domain' do

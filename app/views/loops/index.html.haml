@@ -1,0 +1,16 @@
+= link_to(new_loop_kickoff_path, class: 'btn btn-large') do
+  %i.icon-plus
+  Kickoff a new loop
+
+%h2 Loops that you need to fill out
+%ul
+- @assigned_loops.each do |loop|
+  %li
+    A loop about
+    = loop.subject_email
+
+%h2 Loops that you created
+%ul
+- @created_loops.each do |loop|
+  %li
+    = "A loop about #{loop.subject_email}, assigned to #{loop.email}"

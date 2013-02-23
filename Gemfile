@@ -28,7 +28,6 @@ group :test do
   gem 'capybara-webkit'
   gem 'factory_girl_rails'
   gem 'faker'
-  gem 'jasmine'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'shoulda-matchers'

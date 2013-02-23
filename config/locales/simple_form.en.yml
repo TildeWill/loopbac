@@ -11,9 +11,21 @@ en:
     error_notification:
       default_message: "Please review the problems below:"
     # Labels and hints examples
-    # labels:
-    #   defaults:
-    #     password: 'Password'
+    labels:
+      defaults:
+        password: 'Password'
+      loop_kickoff:
+        new:
+          subject_email: 'About Who'
+          subject_due_date: 'Due'
+          reviewer_emails: 'Who to ask'
+          reviewer_due_date: 'Due'
+
+  helpers:
+    submit:
+      loop_kickoff:
+        create: 'Start this Loop'
+
     #   user:
     #     new:
     #       email: 'E-mail to sign in.'
