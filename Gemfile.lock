@@ -1,5 +1,6 @@
-PATH
-  remote: ../google_apps_oauth2
+GIT
+  remote: git://github.com/TildeWill/google_apps_oauth2.git
+  revision: 1a59a3dbaf15708cb516bf3efb881081ce2ea8c6
   specs:
     google_apps_oauth2 (0.1)
       httparty
