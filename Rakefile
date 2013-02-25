@@ -3,10 +3,10 @@
 # for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
 require File.expand_path('../config/application', __FILE__)
+Loopbac::Application.load_tasks
+
 if Rails.env.development? || Rails.env.test?
   require 'rspec/core/rake_task'
-
-  Loopbac::Application.load_tasks
 
   RSpec::Core::RakeTask.new(:spec)
 
