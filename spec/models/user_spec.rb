@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe User do
   describe 'relationships' do
-    it { should have_many(:loops) }
+    it { should have_many(:created_loops) }
   end
 
   describe '#domain' do
