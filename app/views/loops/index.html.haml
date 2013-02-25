@@ -6,11 +6,13 @@
 %ul
 - @assigned_loops.each do |loop|
   %li
-    A loop about
-    = loop.subject_email
+    = link_to(loop_path(loop)) do
+      A loop about
+      = loop.subject_email
 
 %h2 Loops that you created
 %ul
 - @created_loops.each do |loop|
   %li
-    = "A loop about #{loop.subject_email}, assigned to #{loop.email}"
+    = link_to(loop_path(loop)) do
+      = "A loop about #{loop.subject_email}, assigned to #{loop.email}"

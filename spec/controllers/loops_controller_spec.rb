@@ -12,4 +12,12 @@ describe LoopsController do
       assigns(:assigned_loops).should == current_user.assigned_loops
     end
   end
+
+  describe '#show' do
+    it 'assigns the loop that was looked up by id' do
+      loop = create(:loop)
+      get :show, id: loop.id
+      assigns[:loop].should == loop
+    end
+  end
 end
