@@ -22,9 +22,9 @@ class User < ActiveRecord::Base
       user.last_name = auth["info"]["last_name"]
       user.full_name = auth["info"]["name"]
       user.email = auth["info"]["email"]
-      user.login = auth["info"]["email"].split("@").first
       user.oauth2_token = auth['credentials']['token']
       user.refresh_token = auth['credentials']['refresh_token']
+      user.image_url = auth['info']['image']
     end
   end
 end
