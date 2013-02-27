@@ -25,9 +25,13 @@ class LoopKickoff
     return false unless valid?
 
     Loop.create(created_by_email: coach_email, subject_email: subject_email, email: coach_email, question_type: :coach)
-    Loop.create(created_by_email: coach_email, subject_email: subject_email, email: subject_email, question_type: :subject)
+
+    subject_loop = Loop.create(created_by_email: coach_email, subject_email: subject_email, email: subject_email, question_type: :subject)
+    LoopMailer.kickoff_subject(subject_loop).deliver
+
     reviewer_emails.each do |email|
-      Loop.create(created_by_email: coach_email, subject_email: subject_email, email: email, question_type: :recipient)
+      reviewer_loop = Loop.create(created_by_email: coach_email, subject_email: subject_email, email: email, question_type: :recipient)
+      LoopMailer.kickoff_reviewer(reviewer_loop).deliver
     end
     true
   end
