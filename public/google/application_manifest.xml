@@ -27,7 +27,8 @@
   <Extension id="navLink" type="link">
     <Name>Loopb.ac</Name>
     <Url>http://loopb.ac/auth/google_oauth2?domain=${DOMAIN_NAME}</Url>
-    <Scope ref="contactFeed"/>
+    <Scope ref="userinfo.email"/>
+    <Scope ref="userinfo.profile"/>
     <Scope ref="userFeed"/>
   </Extension>
 
@@ -36,15 +37,19 @@
     <Url>http://loopb.ac</Url>
   </Extension>
 
-  <!-- Need access to the user profiles in the domain -->
-  <Scope id="contactFeed">
-    <Url>https://www.google.com/m8/feeds/</Url>
-    <Reason>This application provides autocomplete functionality when collaborating and updates anniversaries and notes for a contact</Reason>
+  <Scope id="userinfo.email">
+    <Url>https://www.googleapis.com/auth/userinfo.email</Url>
+    <Reason>This application uses your email when collaborating with other members</Reason>
+  </Scope>
+
+  <Scope id="userinfo.profile">
+    <Url>https://www.googleapis.com/auth/userinfo.profile</Url>
+    <Reason>This application uses your profile picture when collaborating with other members</Reason>
   </Scope>
 
   <Scope id="userFeed">
     <Url>https://apps-apis.google.com/a/feeds/user/#readonly</Url>
-    <Reason>Need users yo</Reason>
+    <Reason>Used for auto-complete functionality when working with other members</Reason>
   </Scope>
 
   <!-- Configures extensions available for the standard edition of the application. -->
