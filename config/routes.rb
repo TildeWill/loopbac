@@ -1,5 +1,6 @@
 Loopbac::Application.routes.draw do
 
+  resource :calendar
   resources :loops
   resources :loop_kickoffs
   match "/auth/:provider/callback" => "sessions#create"
