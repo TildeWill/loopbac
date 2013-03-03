@@ -8,28 +8,27 @@ module Google
     attr_accessor :oauth_token
     attr_accessor :version
 
-    def initialize(token, version = '1.0')
-      @token = token
-      @version = version
-    end
-
-    def get(base, query_parameters)
-      make_request(:get, url(base, query_parameters))
-    end
-
-    def make_request(method, url)
-      response = @token.request(method, url, {'GData-Version' => version})
-      if response.is_a?(Net::HTTPFound)
-        url = response['Location']
-        return make_request(method, response['Location'])
-      end
-      return unless response.is_a?(Net::HTTPSuccess)
-      REXML::Document.new(response.body)
+    def self.get(base, query_parameters, version = '2.0')
+      make_request(:get, url(base, query_parameters), version)
     end
 
     private
 
-    def url(base, query_parameters={})
+    def self.make_request(method, url, version)
+      oauth_consumer = OAuth::Consumer.new(GOOGLE_APP_ID, GOOGLE_APP_SECRET)
+      access_token = OAuth::AccessToken.new(oauth_consumer)
+
+      response = access_token.request(method, url, {'GData-Version' => version})
+      if response.is_a?(Net::HTTPFound)
+        return make_request(method, response['Location'], version)
+      end
+      return unless response.is_a?(Net::HTTPSuccess)
+      feed = REXML::Document.new(response.body)
+      throw :halt, [500, "Unable to query feed"] if feed.nil?
+      feed
+    end
+
+    def self.url(base, query_parameters={})
       url = base
       unless query_parameters.empty?
         url += '?'
