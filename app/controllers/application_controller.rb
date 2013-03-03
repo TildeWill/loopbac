@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :user_signed_in?, :current_contacts
 
   def authenticate_user!
-    redirect_to '/auth/google_oauth2' unless user_signed_in?
+    redirect_to '/auth/google_apps' unless user_signed_in?
   end
 
   private

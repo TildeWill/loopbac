@@ -8,3 +8,4 @@ http://googlecode.blogspot.com/2011/10/upcoming-changes-to-oauth-20-endpoint.htm
 = OpenID, OmniAuth, GoogleApps
 https://developers.google.com/oauthplayground
 https://developers.google.com/accounts/docs/OAuth#GoogleAppsOAuth
+https://developers.google.com/google-apps/marketplace/tutorial_ruby

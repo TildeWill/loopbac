@@ -2,8 +2,6 @@ source 'https://rubygems.org'
 
 gem 'bootstrap-sass'
 gem 'draper'
-#gem 'google_apps_oauth2', path: '../google_apps_oauth2'
-gem 'google_apps_oauth2', github: 'TildeWill/google_apps_oauth2'
 gem 'haml'
 gem 'hpricot'
 gem 'informal'
@@ -11,7 +9,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'pg'
 gem 'premailer-rails3'
-gem 'omniauth-google-oauth2'
+gem 'omniauth-google-apps'
 gem 'rails'
 gem 'responders'
 gem 'simple_form'
@@ -24,12 +22,14 @@ end
 group :test, :development do
   gem 'bumbler'
   gem 'letter_opener'
+  gem 'awesome_print'
 end
 
 group :development do
   gem 'heroku_san'
   gem 'http_logger'
   gem 'quiet_assets'
+  gem 'thin'
 end
 
 group :test do

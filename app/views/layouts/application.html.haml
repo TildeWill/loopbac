@@ -43,6 +43,8 @@
                 %span.dropdown
                   %a.navbar-link{href: "#"}
                     = image_tag(current_user.image_url, class: 'profile-icon')
+
+                  = link_to('Sign out', signout_path)
             %ul.nav
               %li
                 = link_to("Loops", loops_path)
