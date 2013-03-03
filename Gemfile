@@ -14,6 +14,7 @@ gem 'omniauth-google-apps'
 gem 'rails'
 gem 'responders'
 gem 'simple_form'
+gem 'thin'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -30,7 +31,6 @@ group :development do
   gem 'heroku_san'
   gem 'http_logger'
   gem 'quiet_assets'
-  gem 'thin'
 end
 
 group :test do
