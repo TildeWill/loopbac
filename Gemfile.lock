@@ -241,6 +241,7 @@ DEPENDENCIES
   letter_opener
   oauth
   omniauth-google-apps
+  omniauth-openid
   pg
   premailer-rails3
   quiet_assets
