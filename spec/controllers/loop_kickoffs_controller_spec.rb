@@ -5,7 +5,7 @@ describe LoopKickoffsController do
 
   describe '#new' do
     before do
-      controller.stub(:current_contacts).and_return([])
+      controller.stub(:current_users).and_return([])
     end
 
     it 'assigns a new Loop' do

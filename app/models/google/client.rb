@@ -1,7 +1,9 @@
 require 'oauth'
 require 'rexml/document'
 
+# Simple helper around the ruby oauth library for making Google Data API requests
 module Google
+
   class Client
     attr_accessor :oauth_token
     attr_accessor :version

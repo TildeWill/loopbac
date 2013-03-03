@@ -1,4 +1,4 @@
-class Google::ContactDecorator < Draper::Decorator
+class Google::UserDecorator < Draper::Decorator
   delegate_all
 
   def to_autocomplete_json
