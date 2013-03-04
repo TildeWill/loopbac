@@ -18,3 +18,6 @@ By the way, when using the Provisioning API with 2-legged OAuth (for read
 functions), you shouldn't use the xoauth_requestor_id  parameter.
 See this thread on our old forum for more info:
 http://www.google.com/support/forum/p/apps-apis/thread?tid=169e78f776d3e0b5&;hl=en
+
+= Heroku + Google
+http://mechanicalbee.com/2011/omniauth-openid-heroku-and-https.html
