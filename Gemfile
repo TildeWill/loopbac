@@ -4,6 +4,7 @@ gem 'bootstrap-sass'
 gem 'draper'
 gem 'haml'
 gem 'hpricot'
+gem 'http_logger'
 gem 'informal'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
@@ -28,7 +29,6 @@ end
 
 group :development do
   gem 'heroku_san'
-  gem 'http_logger'
   gem 'quiet_assets'
 end
 
