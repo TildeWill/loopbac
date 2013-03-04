@@ -1,5 +1,4 @@
 Loopbac::Application.routes.draw do
-
   resource :calendar
   resource :contact
   resources :users
