@@ -2,9 +2,7 @@ require 'oauth'
 require 'rexml/document'
 
 module Google
-
   class Client
-    attr_accessor :oauth_token
     attr_accessor :version
 
     def self.get(base, query_parameters, version = '2.0')
