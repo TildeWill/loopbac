@@ -31,7 +31,9 @@
     <Scope ref="userinfo.profile"/>
     <Scope ref="userFeed"/>
     <Scope ref="contactFeed"/>
+    <!--<Scope ref="profileFeed"/>-->
     <Scope ref="calendarFeed"/>
+    <Scope ref="googlePlus"/>
   </Extension>
 
   <!-- Declare our OpenID realm so our app is white listed -->
@@ -46,8 +48,13 @@
 
   <Scope id="userinfo.profile">
     <Url>https://www.googleapis.com/auth/userinfo.profile</Url>
-    <Reason>This application uses your profile picture when collaborating with other members</Reason>
+    <Reason>This application uses profile pictures when collaborating with other members</Reason>
   </Scope>
+
+  <!--<Scope id="profileFeed">-->
+    <!--<Url>https://www.google.com/m8/feeds/profiles</Url>-->
+    <!--<Reason>This application uses profile pictures when collaborating with other members</Reason>-->
+  <!--</Scope>-->
 
   <Scope id="userFeed">
     <Url>https://apps-apis.google.com/a/feeds/user/#readonly</Url>
@@ -56,6 +63,11 @@
 
   <Scope id="contactFeed">
     <Url>https://www.google.com/m8/feeds</Url>
+    <Reason>Used for auto-complete functionality when working with other members</Reason>
+  </Scope>
+
+  <Scope id="googlePlus">
+    <Url>https://www.googleapis.com/auth/plus.login</Url>
     <Reason>Used for auto-complete functionality when working with other members</Reason>
   </Scope>
 

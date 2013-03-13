@@ -6,10 +6,9 @@ module Google
     attr_accessor :version
 
     def self.get(base, query_parameters, version = '2.0')
-      make_request(:get, url(base, query_parameters), version)
+      response_body = make_request(:get, url(base, query_parameters), version)
+      REXML::Document.new(response_body)
     end
-
-    private
 
     def self.make_request(method, url, version)
       oauth_consumer = OAuth::Consumer.new(GOOGLE_APP_ID, GOOGLE_APP_SECRET)
@@ -19,11 +18,12 @@ module Google
       if response.is_a?(Net::HTTPFound)
         return make_request(method, response['Location'], version)
       end
-      return unless response.is_a?(Net::HTTPSuccess)
-      feed = REXML::Document.new(response.body)
-      throw :halt, [500, "Unable to query feed"] if feed.nil?
-      feed
+      throw :halt, [500, "Unable to query feed"] unless response.is_a?(Net::HTTPSuccess)
+
+      response.body
     end
+
+    private
 
     def self.url(base, query_parameters={})
       url = base
