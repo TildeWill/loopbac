@@ -7,6 +7,7 @@ Loopbac::Application.routes.draw do
   resources :users
   resources :loops
   resources :loop_kickoffs
+  resources :notes
   match "/auth/:provider/callback" => "sessions#create"
   match "/signout" => "sessions#destroy", :as => :signout
 

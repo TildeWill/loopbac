@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  respond_to :html
   responders :flash
   protect_from_forgery
   before_filter :authenticate_user!
@@ -6,7 +7,10 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :user_signed_in?, :current_users
 
   def authenticate_user!
-    redirect_to '/auth/google_apps' unless user_signed_in?
+    unless user_signed_in?
+      session[:return_to] = request.path
+      redirect_to '/auth/google_apps'
+    end
   end
 
   private

@@ -1,0 +1,10 @@
+= simple_form_for(@note) do |f|
+  = f.input :about_email,
+    as: :contact_picker,
+    input_html: {data: {contacts: "[#{current_users.map(&:to_autocomplete_json).join(",")}]"}}
+
+  = f.input(:details)
+
+  = f.submit
+
+= render @notes

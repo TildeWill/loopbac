@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130223234237) do
+ActiveRecord::Schema.define(:version => 20130331183917) do
 
   create_table "loops", :force => true do |t|
     t.datetime "created_at",       :null => false
@@ -20,6 +20,14 @@ ActiveRecord::Schema.define(:version => 20130223234237) do
     t.string   "question_type"
     t.string   "created_by_email"
     t.string   "subject_email"
+  end
+
+  create_table "notes", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "about_email"
+    t.text     "details"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "sessions", :force => true do |t|
@@ -38,7 +46,7 @@ ActiveRecord::Schema.define(:version => 20130223234237) do
     t.datetime "updated_at",                    :null => false
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "full_name"
+    t.string   "name"
     t.text     "image_url"
     t.string   "uid"
     t.string   "oauth2_token"
