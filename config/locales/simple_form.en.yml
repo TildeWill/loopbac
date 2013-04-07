@@ -26,6 +26,8 @@ en:
 
   helpers:
     submit:
+      loop:
+        update: 'Deliver the Feedback!'
       loop_kickoff:
         create: 'Start this Loop'
       note:

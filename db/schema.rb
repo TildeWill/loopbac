@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20130331183917) do
     t.string   "question_type"
     t.string   "created_by_email"
     t.string   "subject_email"
+    t.text     "responses"
   end
 
   create_table "notes", :force => true do |t|

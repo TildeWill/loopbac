@@ -8,4 +8,11 @@ class LoopsController < ApplicationController
   def show
     @loop = Loop.find(params[:id])
   end
+
+  def edit
+    @loop = Loop.find(params[:id])
+  end
+
+  def update
+  end
 end
