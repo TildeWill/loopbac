@@ -10,36 +10,26 @@ en:
       # html: '<abbr title="required">*</abbr>'
     error_notification:
       default_message: "Please review the problems below:"
-    # Labels and hints examples
     labels:
       defaults:
         password: 'Password'
-      loop_kickoff:
-        new:
-          subject_email: 'About Who'
-          subject_due_date: 'Due'
-          reviewer_emails: 'Who to ask'
-          reviewer_due_date: 'Due'
+      feedback:
+        index:
+          about_email: 'Who is your feedback about?'
+
       note:
         index:
           about_email: "New Note About"
 
   helpers:
     submit:
-      loop:
-        update: 'Deliver the Feedback!'
-      loop_kickoff:
-        create: 'Start this Loop'
+      feedback:
+        create: 'Send Feedback'
       note:
         create: 'Save'
 
-    #   user:
-    #     new:
-    #       email: 'E-mail to sign in.'
-    #     edit:
-    #       email: 'E-mail.'
-    # hints:
-    #   defaults:
-    #     username: 'User name to sign in.'
-    #     password: 'No special characters, please.'
+#    hints:
+#       defaults:
+#         username: 'User name to sign in.'
+#         password: 'No special characters, please.'
 

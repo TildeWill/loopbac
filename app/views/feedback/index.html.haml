@@ -1,0 +1,14 @@
+= simple_form_for(@feedback) do |f|
+  = f.input :about_email
+  = f.input :details
+  = f.submit
+
+- @feedback_given.each do |feedback|
+  .feedback-given
+    = feedback.about_email
+    = feedback.details
+
+- @feedback_received.each do |feedback|
+  .feedback-received
+    = feedback.user.name
+    = feedback.details
