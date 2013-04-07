@@ -15,6 +15,7 @@ gem 'omniauth-google-apps'
 gem 'rails'
 gem 'responders'
 gem 'simple_form'
+gem 'strong_parameters'
 gem 'thin'
 
 group :assets do
