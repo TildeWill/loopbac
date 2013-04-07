@@ -11,17 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130331183917) do
-
-  create_table "loops", :force => true do |t|
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-    t.string   "email"
-    t.string   "question_type"
-    t.string   "created_by_email"
-    t.string   "subject_email"
-    t.text     "responses"
-  end
+ActiveRecord::Schema.define(:version => 20130407165943) do
 
   create_table "notes", :force => true do |t|
     t.integer  "user_id"

@@ -3,8 +3,6 @@ class User < ActiveRecord::Base
   attr_accessible :email, :first_name, :last_name,
                   :name, :image_url, :uid
 
-  has_many :assigned_loops, foreign_key: 'email', primary_key: 'email', class_name: 'Loop'
-  has_many :created_loops, foreign_key: 'created_by_email', primary_key: 'email', class_name: 'Loop'
   has_many :notes
 
   def image_url(size = 32)
