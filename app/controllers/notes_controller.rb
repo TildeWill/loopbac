@@ -1,11 +1,11 @@
 class NotesController < ApplicationController
   def index
     @note = Note.new
-    @notes = Note.all
+    @notes = current_user.notes
   end
 
   def create
-    @note = Note.create(params[:note])
+    @note = current_user.notes.create(params[:note])
     respond_with @note, location: notes_url
   end
 end

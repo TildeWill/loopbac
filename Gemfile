@@ -25,7 +25,6 @@ end
 group :test, :development do
   gem 'bumbler'
   gem 'letter_opener'
-  gem 'awesome_print'
 end
 
 group :development do
@@ -35,8 +34,8 @@ end
 
 group :test do
   gem 'capybara-webkit'
-  gem 'factory_girl_rails'
   gem 'email_spec'
+  gem 'factory_girl_rails'
   gem 'faker'
   gem 'rspec'
   gem 'rspec-rails'

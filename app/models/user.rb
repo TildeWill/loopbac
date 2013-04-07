@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 
   has_many :assigned_loops, foreign_key: 'email', primary_key: 'email', class_name: 'Loop'
   has_many :created_loops, foreign_key: 'created_by_email', primary_key: 'email', class_name: 'Loop'
+  has_many :notes
 
   def image_url(size = 32)
     "http://profiles.google.com/s2/photos/profile/me?sz=#{size}"
