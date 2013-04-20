@@ -1,5 +1,5 @@
 = simple_form_for(@feedback) do |f|
-  = f.input :about_email
+  = f.input :about_email, as: :contact_picker, input_html: {data: {contacts: "[#{current_users.map(&:to_autocomplete_json).join(",")}]"}}
   = f.input :details
   = f.submit
 
