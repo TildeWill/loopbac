@@ -23,7 +23,6 @@ class ApplicationController < ActionController::Base
   end
 
   def current_users
-    users = Google::User.all(current_user.domain)
-    Google::UserDecorator.decorate_collection(users)
+    User.scoped.decorate
   end
 end
