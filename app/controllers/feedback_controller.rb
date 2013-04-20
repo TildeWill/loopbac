@@ -7,6 +7,7 @@ class FeedbackController < ApplicationController
 
   def create
     @feedback = current_user.feedback_given.create(feedback_params)
+    FeedbackMailer.feedback_received(@feedback).deliver!
     respond_with @feedback, location: feedback_index_path
   end
 

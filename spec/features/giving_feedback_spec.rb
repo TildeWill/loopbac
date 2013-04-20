@@ -14,7 +14,8 @@ feature "Giving Feedback" do
   scenario "Employee gives feedback" do
     %Q{
       When I give feedback to a peer
-      Then we should both see the feedback on the site
+      Then the subject should receive the feedback in an email
+      And we should both see the feedback on the site
     }
 
     using_session(:reviewer) do
@@ -23,6 +24,8 @@ feature "Giving Feedback" do
       give_feedback
       see_given_feedback
     end
+
+    subject_receives_email
 
     using_session(:subject) do
       subject_logs_in
@@ -63,6 +66,14 @@ feature "Giving Feedback" do
       page.should have_content @peer.email
       page.should have_content "You did a great job running the IPM today."
     end
+  end
+
+  def subject_receives_email
+    email = ActionMailer::Base.deliveries.last
+    email.should have_subject("#{@reviewer.name} just gave you feedback")
+    email.should deliver_to(@peer.email)
+    email.should deliver_from("Loopbac Feedback <loops@loopb.ac>")
+    email.should have_body_text(/You did a great job running the IPM today./)
   end
 
   def see_received_feedback
