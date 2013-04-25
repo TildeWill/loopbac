@@ -18,7 +18,6 @@ feature "Taking notes about peers" do
     }
 
     employee_logs_in
-    go_to_notes
     create_a_note
     see_the_note
   end
@@ -34,13 +33,12 @@ feature "Taking notes about peers" do
     login_as(create(:user))
   end
 
-  def go_to_notes
-    visit "/"
-    click_link "Notes"
-  end
-
   def create_a_note
-    fill_in "New Note About", with: @peer.name
+    visit "/"
+    within('.notes-nav') do
+      click_link "Create New"
+    end
+    find(:xpath, "//input[@id='note_subject_id']").set(@peer.id)
     fill_in "Details", with: "She gave me ice cream."
     click_button "Save"
   end

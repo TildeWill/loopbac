@@ -46,7 +46,7 @@
 
                   = link_to('Sign out', signout_path)
             %ul.nav
-              %li.dropdown
+              %li.dropdown.loops-nav
                 = link_to("#", :class => "dropdown-toggle", "data-toggle" => "dropdown") do
                   Loops
                   %b.caret
@@ -55,14 +55,14 @@
                   %li= link_to("Given", "#")
                   %li= link_to("Received", "#")
                   %li= link_to("Create New", "#")
-              %li.dropdown
+              %li.dropdown.goals-nav
                 = link_to("#", :class => "dropdown-toggle", "data-toggle" => "dropdown") do
                   Goals
                   %b.caret
                 %ul.dropdown-menu
                   %li= link_to("Current", "#")
                   %li= link_to("Completed", "#")
-              %li.dropdown
+              %li.dropdown.notes-nav
                 = link_to("#", :class => "dropdown-toggle", "data-toggle" => "dropdown") do
                   Notes
                   %b.caret
@@ -71,7 +71,7 @@
                   %li= link_to("Private Notes About Others", notes_path(about: 'others'))
                   %li= link_to("Create New", new_note_path)
 
-              %li.dropdown
+              %li.dropdown.tasks-nav
                 = link_to("#", :class => "dropdown-toggle", "data-toggle" => "dropdown") do
                   Tasks
                   %b.caret
@@ -79,8 +79,8 @@
                   %li= link_to("Assigned to Me", "#")
                   %li= link_to("Assigned to Others", "#")
                   %li= link_to("Create New", "#")
-              %li= link_to("My Coach", "#")
-              %li.dropdown
+              %li.coach-nav= link_to("My Coach", "#")
+              %li.dropdown.reports-nav
                 = link_to("#", :class => "dropdown-toggle", "data-toggle" => "dropdown") do
                   My Reports
                   %b.caret

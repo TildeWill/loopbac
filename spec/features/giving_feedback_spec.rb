@@ -52,7 +52,9 @@ feature "Giving Feedback" do
 
   def go_to_feedback
     visit "/"
-    click_link "Feedback"
+    within(".loops-nav") do
+      click_link("Create New")
+    end
   end
 
   def give_feedback
