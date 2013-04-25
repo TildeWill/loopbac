@@ -30,10 +30,11 @@
     <Scope ref="userinfo.email"/>
     <Scope ref="userinfo.profile"/>
     <Scope ref="userFeed"/>
-    <Scope ref="contactFeed"/>
-    <!--<Scope ref="profileFeed"/>-->
-    <Scope ref="calendarFeed"/>
-    <Scope ref="googlePlus"/>
+    <!--<Scope ref="contactFeed"/>-->
+    <Scope ref="profileFeed"/>
+    <!--<Scope ref="photos"/>-->
+    <!--<Scope ref="calendarFeed"/>-->
+    <!--<Scope ref="googlePlus"/>-->
   </Extension>
 
   <!-- Declare our OpenID realm so our app is white listed -->
@@ -51,10 +52,15 @@
     <Reason>This application uses profile pictures when collaborating with other members</Reason>
   </Scope>
 
-  <!--<Scope id="profileFeed">-->
-    <!--<Url>https://www.google.com/m8/feeds/profiles</Url>-->
-    <!--<Reason>This application uses profile pictures when collaborating with other members</Reason>-->
-  <!--</Scope>-->
+  <Scope id="profileFeed">
+    <Url>https://www.google.com/m8/feeds/profiles/</Url>
+    <Reason>This application populates autocomplete fields with a list of all users in the domain</Reason>
+  </Scope>
+
+  <Scope id="photos">
+    <Url>https://www.google.com/m8/feeds/photos/profile</Url>
+    <Reason>This application uses profile pictures when collaborating with other members</Reason>
+  </Scope>
 
   <Scope id="userFeed">
     <Url>https://apps-apis.google.com/a/feeds/user/#readonly</Url>
@@ -62,7 +68,7 @@
   </Scope>
 
   <Scope id="contactFeed">
-    <Url>https://www.google.com/m8/feeds</Url>
+    <Url>https://www.google.com/m8/feeds/</Url>
     <Reason>Used for auto-complete functionality when working with other members</Reason>
   </Scope>
 

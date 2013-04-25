@@ -5,9 +5,13 @@ module Google
   class Client
     attr_accessor :version
 
-    def self.get(base, query_parameters, version = '2.0')
-      response_body = make_request(:get, url(base, query_parameters), version)
+    def self.get(base, query_parameters = {}, version = '2.0')
+      response_body = get_raw(base, query_parameters, version)
       REXML::Document.new(response_body)
+    end
+
+    def self.get_raw(base, query_parameters = {}, version = '2.0')
+      make_request(:get, url(base, query_parameters), version)
     end
 
     def self.make_request(method, url, version)
