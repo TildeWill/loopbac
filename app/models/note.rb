@@ -1,5 +1,6 @@
 class Note < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :author, class_name: User
+  belongs_to :subject, class_name: User
 
-  validates :user, :about_email, :details, presence: true
+  validates :author, :subject, :details, presence: true
 end

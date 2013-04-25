@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :first_name, :last_name,
                   :name, :image_url, :uid
 
-  has_many :notes
+  has_many :notes, :foreign_key => :author_id
   has_many :feedback_given, class_name: Feedback
   has_many :feedback_received, class_name: Feedback, foreign_key: :about_email, primary_key: :email
 

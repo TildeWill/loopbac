@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :user, :aliases => [:coach, :subject] do
+  factory :user, :aliases => [:coach, :subject, :author] do
     sequence(:uid) { |n| n.to_s }
     email { Faker::Internet.email }
     first_name { Faker::Name.first_name }
