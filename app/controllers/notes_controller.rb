@@ -12,7 +12,7 @@ class NotesController < ApplicationController
   end
 
   def create
-    @note = current_user.notes.create!(note_params)
+    @note = current_user.notes.create(note_params)
     respond_with @note, location: notes_url
   end
 

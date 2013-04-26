@@ -13,7 +13,7 @@ class SimpleFeedbacksController < ApplicationController
   end
 
   def create
-    @simple_feedback = current_user.feedback_given.create!(feedback_params)
+    @simple_feedback = current_user.feedback_given.create(feedback_params)
     FeedbackMailer.simple_feedback_received(@simple_feedback).deliver!
     respond_with @simple_feedback, location: simple_feedbacks_path(about: 'others')
   end

@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_filter :authenticate_user!, only: :create
+  skip_before_filter :check_for_coach, only: :create
 
   def create
     auth = request.env["omniauth.auth"]
@@ -13,7 +14,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to root_url, :notice => "Signed out!"
+    redirect_to logged, :notice => "Signed out!"
   end
 
   private

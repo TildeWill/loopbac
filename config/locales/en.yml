@@ -10,3 +10,7 @@ en:
         full_name: Name
       loop_kickoff:
         subject_email:
+  flash:
+    coach_relationships:
+      create:
+        notice: "Thanks for setting your coach!"

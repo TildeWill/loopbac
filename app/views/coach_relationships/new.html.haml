@@ -1,0 +1,3 @@
+= simple_form_for :coach_relationship, :url => url_for(:action => 'create', :controller => 'coach_relationships') do |f|
+  = f.input :coach_id, as: :contact_picker
+  = f.submit t('helpers.submit.coach_relationship.create')

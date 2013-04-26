@@ -13,20 +13,24 @@ en:
     labels:
       defaults:
         password: 'Password'
-      simple_feedback:
-        new:
-          subject_id: 'Who is your feedback about?'
-
       note:
         new:
           subject_id: "Who is your note about?"
+      simple_feedback:
+        new:
+          subject_id: 'Who is your feedback about?'
+      coach_relationship:
+        new:
+          coach_id: "Who is your coach?"
 
   helpers:
     submit:
-      simple_feedback:
-        create: 'Send Feedback'
       note:
         create: 'Save'
+      simple_feedback:
+        create: 'Send Feedback'
+      coach_relationship:
+        create: 'Set My Coach'
 
 #    hints:
 #       defaults:
