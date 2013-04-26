@@ -13,17 +13,17 @@ en:
     labels:
       defaults:
         password: 'Password'
-      feedback:
-        index:
-          about_email: 'Who is your feedback about?'
+      simple_feedback:
+        new:
+          subject_id: 'Who is your feedback about?'
 
       note:
-        index:
-          about_email: "New Note About"
+        new:
+          subject_id: "Who is your note about?"
 
   helpers:
     submit:
-      feedback:
+      simple_feedback:
         create: 'Send Feedback'
       note:
         create: 'Save'

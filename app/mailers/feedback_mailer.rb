@@ -1,8 +1,8 @@
 class FeedbackMailer < ActionMailer::Base
-  default from: "Loopbac Feedback <loops@loopb.ac>"
+  default from: "Loops <loops@loopb.ac>"
 
-  def feedback_received(feedback)
-    @feedback = feedback
-    mail(to: feedback.about_email, subject: "#{feedback.user.name} just gave you feedback")
+  def simple_feedback_received(simple_feedback)
+    @simple_feedback = simple_feedback
+    mail(to: simple_feedback.subject.email, subject: "#{simple_feedback.author.name} just gave you feedback")
   end
 end

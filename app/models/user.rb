@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
                   :name, :image_url, :uid
 
   has_many :notes, :foreign_key => :author_id
-  has_many :feedback_given, class_name: Feedback
-  has_many :feedback_received, class_name: Feedback, foreign_key: :about_email, primary_key: :email
+  has_many :feedback_given, class_name: SimpleFeedback, foreign_key: :author_id
+  has_many :feedback_received, class_name: SimpleFeedback, foreign_key: :subject_id
 
   def image_url(size = 32)
     "http://profiles.google.com/s2/photos/profile/me?sz=#{size}"

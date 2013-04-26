@@ -23,9 +23,9 @@ feature "Taking notes about peers" do
   end
 
   def stub_google_users
-    @peer = create(:user)
+    @subject = create(:subject)
     Google::User.stub(:all).and_return([
-      Google::User.new(login: @peer.email.split('@').first, first_name: @peer.first_name, last_name: @peer.last_name)
+      Google::User.new(login: @subject.email.split('@').first, first_name: @subject.first_name, last_name: @subject.last_name)
     ])
   end
 
@@ -38,13 +38,13 @@ feature "Taking notes about peers" do
     within('.notes-nav') do
       click_link "Create New"
     end
-    find(:xpath, "//input[@id='note_subject_id']").set(@peer.id)
+    find(:xpath, "//input[@id='note_subject_id']").set(@subject.id)
     fill_in "Details", with: "She gave me ice cream."
     click_button "Save"
   end
 
   def see_the_note
-    page.should have_content @peer.name
+    page.should have_content @subject.name
     page.should have_content "She gave me ice cream."
   end
 end

@@ -52,9 +52,9 @@
                   %b.caret
                 %ul.dropdown-menu
                   %li= link_to("Action Required", "#")
-                  %li= link_to("Given", "#")
-                  %li= link_to("Received", "#")
-                  %li= link_to("Create New", "#")
+                  %li= link_to("Given", about_others_simple_feedbacks_path)
+                  %li= link_to("Received", about_me_simple_feedbacks_path)
+                  %li= link_to("Create New", new_simple_feedback_path)
               %li.dropdown.goals-nav
                 = link_to("#", :class => "dropdown-toggle", "data-toggle" => "dropdown") do
                   Goals
@@ -67,8 +67,8 @@
                   Notes
                   %b.caret
                 %ul.dropdown-menu
-                  %li= link_to("Private Notes About Me", notes_path(about: 'me'))
-                  %li= link_to("Private Notes About Others", notes_path(about: 'others'))
+                  %li= link_to("Private Notes About Me", about_me_notes_path)
+                  %li= link_to("Private Notes About Others", about_others_notes_path)
                   %li= link_to("Create New", new_note_path)
 
               %li.dropdown.tasks-nav

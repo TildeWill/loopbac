@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe Feedback do
+describe SimpleFeedback do
 end

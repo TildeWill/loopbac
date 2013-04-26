@@ -20,7 +20,6 @@ feature "Giving Feedback" do
 
     using_session(:reviewer) do
       reviewer_logs_in
-      go_to_feedback
       give_feedback
       see_given_feedback
     end
@@ -29,59 +28,55 @@ feature "Giving Feedback" do
 
     using_session(:subject) do
       subject_logs_in
-      go_to_feedback
       see_received_feedback
     end
   end
 
   def stub_google_users
-    @peer = create(:user)
+    @subject = create(:subject)
     Google::User.stub(:all).and_return([
-      Google::User.new(login: @peer.email.split('@').first, first_name: @peer.first_name, last_name: @peer.last_name)
+      Google::User.new(login: @subject.email.split('@').first, first_name: @subject.first_name, last_name: @subject.last_name)
     ])
   end
 
   def reviewer_logs_in
-    @reviewer = create(:user)
-    login_as(@reviewer)
+    @author = create(:author)
+    login_as(@author)
+    visit "/"
   end
 
   def subject_logs_in
-    login_as(@peer)
-  end
-
-  def go_to_feedback
+    login_as(@subject)
     visit "/"
-    within(".loops-nav") do
-      click_link("Create New")
-    end
   end
 
   def give_feedback
-    fill_in "Who is your feedback about?", with: @peer.email
+    within(".loops-nav") do
+      click_link("Create New")
+    end
+    find(:xpath, "//input[@id='simple_feedback_subject_id']").set(@subject.id)
     fill_in "Details", with: "You did a great job running the IPM today."
     click_button "Send Feedback"
   end
 
   def see_given_feedback
-    within(".feedback-given") do
-      page.should have_content @peer.email
-      page.should have_content "You did a great job running the IPM today."
-    end
+    page.should have_content @subject.name
+    page.should have_content "You did a great job running the IPM today."
   end
 
   def subject_receives_email
     email = ActionMailer::Base.deliveries.last
-    email.should have_subject("#{@reviewer.name} just gave you feedback")
-    email.should deliver_to(@peer.email)
-    email.should deliver_from("Loopbac Feedback <loops@loopb.ac>")
+    email.should have_subject("#{@author.name} just gave you feedback")
+    email.should deliver_to(@subject.email)
+    email.should deliver_from("Loops <loops@loopb.ac>")
     email.should have_body_text(/You did a great job running the IPM today./)
   end
 
   def see_received_feedback
-    within(".feedback-received") do
-      page.should have_content @reviewer.name
-      page.should have_content "You did a great job running the IPM today."
+    within(".loops-nav") do
+      click_link("Received")
     end
+    page.should have_content @author.name
+    page.should have_content "You did a great job running the IPM today."
   end
 end
