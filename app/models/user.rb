@@ -16,6 +16,10 @@ class User < ActiveRecord::Base
     email.split("@").last
   end
 
+  def login
+    email.split("@").first
+  end
+
   def self.create_with_omniauth(auth)
     create! do |user|
       user.uid = auth["uid"]

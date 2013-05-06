@@ -7,7 +7,7 @@ module Google
         contact = build_stubbed(:user, email: 'will@example.com', first_name: 'Will', last_name: 'Read')
         contact.stub(:id).and_return(523)
         decorated = UserDecorator.decorate(contact)
-        decorated.to_autocomplete_json.should == {value: 523, label: "Will Read (will@example.com)", icon: '/assets/missing_profile.png'}.to_json
+        decorated.to_autocomplete_json.should == {value: 523, label: "Will Read (will@example.com)", icon: '/photos/will'}.to_json
       end
     end
   end

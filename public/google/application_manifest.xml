@@ -30,8 +30,8 @@
     <Scope ref="userinfo.email"/>
     <Scope ref="userinfo.profile"/>
     <Scope ref="userFeed"/>
-    <!--<Scope ref="contactFeed"/>-->
-    <Scope ref="profileFeed"/>
+    <Scope ref="contactFeed"/>
+    <!--<Scope ref="profileFeed"/>-->
     <!--<Scope ref="photos"/>-->
     <!--<Scope ref="calendarFeed"/>-->
     <!--<Scope ref="googlePlus"/>-->
