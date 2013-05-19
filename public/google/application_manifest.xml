@@ -32,7 +32,7 @@
     <Scope ref="userFeed"/>
     <Scope ref="contactFeed"/>
     <!--<Scope ref="profileFeed"/>-->
-    <!--<Scope ref="photos"/>-->
+    <Scope ref="photos"/>
     <!--<Scope ref="calendarFeed"/>-->
     <!--<Scope ref="googlePlus"/>-->
   </Extension>
@@ -58,7 +58,7 @@
   </Scope>
 
   <Scope id="photos">
-    <Url>https://www.google.com/m8/feeds/photos/profile</Url>
+    <Url>https://www.google.com/m8/feeds/photos/</Url>
     <Reason>This application uses profile pictures when collaborating with other members</Reason>
   </Scope>
 
