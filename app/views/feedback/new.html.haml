@@ -1,0 +1,4 @@
+= simple_form_for @feedback, remote: true do |f|
+  = f.input :subject_id, as: :contact_picker
+  = f.input :content
+  = f.submit

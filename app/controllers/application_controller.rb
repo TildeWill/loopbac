@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :authenticate_user!
 
-  helper_method :current_user, :user_signed_in?
+  helper_method :current_user, :current_users, :user_signed_in?
 
   private
   def authenticate_user!
@@ -16,6 +16,10 @@ class ApplicationController < ActionController::Base
 
   def current_user
     @current_user ||= User.find_by_id(session[:user_id]) if user_signed_in?
+  end
+
+  def current_users
+    User.scoped.decorate
   end
 
   def user_signed_in?

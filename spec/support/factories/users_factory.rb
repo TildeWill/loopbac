@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :user, aliases: [:coach, :subject, :author] do
+  factory :user, aliases: [:subject, :author] do
     coach { FactoryGirl.create(:user, :without_coach) }
     sequence(:uid) { |n| n.to_s }
     email { Faker::Internet.email }

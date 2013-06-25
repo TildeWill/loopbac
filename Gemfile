@@ -16,6 +16,7 @@ gem 'omniauth-google-apps'
 gem 'rails'
 gem 'responders'
 gem 'simple_form'
+gem 'state_machine'
 gem 'strong_parameters'
 gem 'thin'
 
@@ -32,6 +33,7 @@ end
 group :development do
   gem 'heroku_san'
   gem 'quiet_assets'
+  gem 'ruby-graphviz', :require => 'graphviz'
 end
 
 group :test do
