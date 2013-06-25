@@ -11,15 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130426025555) do
-
-  create_table "notes", :force => true do |t|
-    t.integer  "author_id"
-    t.text     "details"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "subject_id"
-  end
+ActiveRecord::Schema.define(:version => 20130625022353) do
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
@@ -30,14 +22,6 @@ ActiveRecord::Schema.define(:version => 20130426025555) do
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
-
-  create_table "simple_feedbacks", :force => true do |t|
-    t.integer  "author_id"
-    t.text     "details"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "subject_id"
-  end
 
   create_table "users", :force => true do |t|
     t.string   "email",         :default => "", :null => false

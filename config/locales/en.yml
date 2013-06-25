@@ -11,6 +11,6 @@ en:
       loop_kickoff:
         subject_email:
   flash:
-    coach_relationships:
-      create:
-        notice: "Thanks for setting your coach!"
+#    coach_relationships:
+#      create:
+#        notice: "Thanks for setting your coach!"

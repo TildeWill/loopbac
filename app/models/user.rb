@@ -3,11 +3,6 @@ class User < ActiveRecord::Base
   attr_accessible :email, :first_name, :last_name,
                   :name, :image_url, :uid
 
-  has_many :notes, :foreign_key => :author_id
-  has_many :feedback_given, class_name: SimpleFeedback, foreign_key: :author_id
-  has_many :feedback_received, class_name: SimpleFeedback, foreign_key: :subject_id
-  belongs_to :coach, class_name: User
-
   def image_url(size = 32)
     "http://profiles.google.com/s2/photos/profile/me?sz=#{size}"
   end
