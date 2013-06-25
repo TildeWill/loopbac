@@ -8,3 +8,22 @@
   height: 30px;
   width: 30px;
 }
+
+.slanted-label {
+  -webkit-transform: rotate(-30deg);
+  -moz-transform: rotate(-60deg);
+  -o-transform: rotate(-60deg);
+  -ms-transform: rotate(-60deg);
+  text-align: left;
+  position: relative;
+  left: 15px;
+  top: 20px;
+  white-space: nowrap;
+  width: 55px;
+  height: 55px;
+}
+
+.text-right {
+  text-align: right;
+  padding-right: 15px;
+}

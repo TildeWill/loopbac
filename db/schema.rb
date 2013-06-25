@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130625033038) do
+ActiveRecord::Schema.define(:version => 20130625150902) do
 
   create_table "feedback", :force => true do |t|
     t.integer  "subject_id"
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(:version => 20130625033038) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "state"
+  end
+
+  create_table "meta_feedback", :force => true do |t|
+    t.integer  "author_id"
+    t.integer  "feedback_id"
+    t.integer  "kindness_score"
+    t.integer  "actionability_score"
+    t.integer  "specificity_score"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
   end
 
   create_table "sessions", :force => true do |t|

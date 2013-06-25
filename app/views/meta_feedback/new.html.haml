@@ -1,0 +1,33 @@
+= simple_form_for @meta_feedback, remote: true do |f|
+  %p.h3 You have new feedback waiting for you! Please review 3 more pieces of feedback to see it:
+  = f.hidden_field :feedback_id
+  %p= @meta_feedback.feedback.content
+  %p This feedback is...
+  %table
+    %thead
+      %tr
+        %th
+        %th
+          .slanted-label Strongly Disagree
+        %th
+          .slanted-label Disagree
+        %th
+          .slanted-label Neutral
+        %th
+          .slanted-label Agree
+        %th
+          .slanted-label Strongly Agree
+    %tbody
+      %tr
+        %td.text-right ...specific
+        - (1..5).each do |i|
+          %td= f.radio_button(:specificity_score, i)
+      %tr
+        %td.text-right ...actionable
+        - (1..5).each do |i|
+          %td= f.radio_button(:actionability_score, i)
+      %tr
+        %td.text-right ...kind
+        - (1..5).each do |i|
+          %td= f.radio_button(:kindness_score, i)
+  %div.text-right= f.submit

@@ -15,5 +15,5 @@
 # end
 
 ActiveSupport::Inflector.inflections do |inflect|
-  inflect.uncountable 'feedback'
+  inflect.uncountable(['feedback', 'meta_feedback'])
 end
