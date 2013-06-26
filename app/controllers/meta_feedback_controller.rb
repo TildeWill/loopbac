@@ -7,6 +7,7 @@ class MetaFeedbackController < ApplicationController
     @meta_feedback = MetaFeedback.new(meta_feedback_params)
     @meta_feedback.author = current_user
     @meta_feedback.save
+    @meta_feedback.feedback.review_for_release
     respond_with @meta_feedback
   end
 

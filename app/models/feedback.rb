@@ -27,5 +27,24 @@ class Feedback < ActiveRecord::Base
     event :reject do
       transition :in_review => :rejected
     end
+
+    def review_for_release
+      if positive_feedback_count() >= 2
+        approve
+      elsif negative_feedback_count() >= 2
+        reject
+      end
+    end
+
+    private
+
+    def negative_feedback_count
+      meta_feedback.select { |mf| mf.kindness_score <= MetaFeedback::DISAGREE }.count
+    end
+
+
+    def positive_feedback_count
+      meta_feedback.select { |mf| mf.kindness_score >= MetaFeedback::AGREE }.count
+    end
   end
 end

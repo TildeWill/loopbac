@@ -1,9 +1,9 @@
 - if @meta_feedback
   = simple_form_for @meta_feedback, remote: true do |f|
-    %p.h3 You have new feedback waiting for you! Please review 3 more pieces of feedback to see it:
+    %p.h3 You have new feedback waiting for you! Please rate 3 more pieces of feedback to see it:
     = f.hidden_field :feedback_id
     %p= @meta_feedback.feedback.content
-    %p This feedback is...
+    %p Do you think this feedback is...
     %table
       %thead
         %tr
