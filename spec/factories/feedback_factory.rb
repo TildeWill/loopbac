@@ -3,7 +3,8 @@
 FactoryGirl.define do
   factory :feedback do
     subject
-    reviewer
-    content "MyText"
+    author
+    content { Faker::Lorem.paragraph}
+    state :in_review
   end
 end

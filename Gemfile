@@ -28,6 +28,8 @@ end
 group :test, :development do
   gem 'bumbler'
   gem 'letter_opener'
+  gem 'factory_girl_rails'
+  gem 'faker'
 end
 
 group :development do
@@ -39,8 +41,6 @@ end
 group :test do
   gem 'capybara-webkit'
   gem 'email_spec'
-  gem 'factory_girl_rails'
-  gem 'faker'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'shoulda-matchers'

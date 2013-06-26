@@ -6,7 +6,7 @@ class FeedbackController < ApplicationController
   def create
     @feedback = Feedback.new(feedback_params)
     @feedback.author = current_user
-    @feedback.save
+    @feedback.submit if @feedback.save
     respond_with @feedback
   end
 
