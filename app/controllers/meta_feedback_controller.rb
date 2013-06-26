@@ -6,15 +6,8 @@ class MetaFeedbackController < ApplicationController
   def create
     @meta_feedback = MetaFeedback.new(meta_feedback_params)
     @meta_feedback.author = current_user
-    respond_to do |format|
-      if @meta_feedback.save
-        format.html { redirect_to(@meta_feedback) }
-        format.js
-      else
-        format.html { render :action => "new" }
-        format.js
-      end
-    end
+    @meta_feedback.save
+    respond_with @meta_feedback
   end
 
   private

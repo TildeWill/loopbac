@@ -6,15 +6,8 @@ class FeedbackController < ApplicationController
   def create
     @feedback = Feedback.new(feedback_params)
     @feedback.author = current_user
-    respond_to do |format|
-      if @feedback.save
-        format.html { redirect_to(@feedback) }
-        format.js
-      else
-        format.html { render :action => "new" }
-        format.js
-      end
-    end
+    @feedback.save
+    respond_with @feedback
   end
 
   private

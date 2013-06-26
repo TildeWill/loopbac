@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  respond_to :html
+  respond_to :html, :js
   responders :flash
   protect_from_forgery
   before_filter :authenticate_user!
