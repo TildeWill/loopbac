@@ -4,12 +4,18 @@
     .new_feedback
       :javascript
         $.ajax({
-              url : '#{new_feedback_path}',
-              dataType : 'script'
-           });
+          url : '#{new_feedback_path}',
+          dataType : 'script'
+        });
   .span6
     %h2 Review
-    = render template: 'meta_feedback/new'
+    .new_meta_feedback
+      :javascript
+        $.ajax({
+          url : '#{new_meta_feedback_path}',
+          dataType : 'script'
+        });
+    -#= render template: 'meta_feedback/new'
 .row-fluid
   .span6
     %h2 Stack Rankings
