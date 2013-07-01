@@ -28,6 +28,7 @@ class Feedback < ActiveRecord::Base
       transition :in_review => :rejected
     end
   end
+
   def review_for_release
     if positive_feedback_count() >= 2
       approve

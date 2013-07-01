@@ -1,4 +1,9 @@
 class FeedbackController < ApplicationController
+  def index
+    @received_feedback = current_user.received_feedback.with_state(:approved).order('created_at desc')
+    @written_feedback = current_user.written_feedback.order('created_at desc')
+  end
+
   def new
     @feedback = Feedback.new
   end

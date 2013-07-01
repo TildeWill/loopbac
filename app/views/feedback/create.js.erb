@@ -1,1 +1,5 @@
 $(".new_feedback").html("<%= escape_javascript(render(@feedback)) %>");
+$.ajax({
+  url: '<%= feedback_index_path(selected_tab: "#written-feedback") %>',
+  dataType: 'script'
+});
