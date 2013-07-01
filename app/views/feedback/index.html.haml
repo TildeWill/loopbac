@@ -1,25 +1,26 @@
 #feedback-list
-  %ul
+  %ul.nav.nav-tabs
+    %li.active
+      %a{:href => "#received-feedback", "data-toggle" => "tab"} About Me
     %li
-      %a{:href => "#written-feedback"} About Others
-    %li
-      %a{:href => "#received-feedback"} About Me
-  #received-feedback
-    - @received_feedback.each do |feedback|
-      %div
-        = feedback.author.name
-        = l(feedback.created_at, format: '%b %e, %Y')
-        = feedback.content
-  #written-feedback
-    - @written_feedback.each do |feedback|
-      %div
-        = feedback.subject.name
-        = l(feedback.created_at, format: '%b %e, %Y')
-        = feedback.state
-        = feedback.content
+      %a{:href => "#written-feedback", "data-toggle" => "tab"} About Others
+
+  .tab-content
+    #received-feedback.tab-pane.active
+      - @received_feedback.each do |feedback|
+        %div
+          = feedback.author.name
+          = l(feedback.created_at, format: '%b %e, %Y')
+          = feedback.content
+    #written-feedback.tab-pane
+      - @written_feedback.each do |feedback|
+        %div
+          = feedback.subject.name
+          = l(feedback.created_at, format: '%b %e, %Y')
+          = feedback.state
+          = feedback.content
 :javascript
   $(function() {
-    var selectedIndex = $('#feedback-list a[href="#{params[:selected_tab]}"]').parent().index();
-    $("#feedback-list").tabs({"active": selectedIndex});
+    $('#feedback-list a[href="#{params[:selected_tab]}"]').tab('show');
   });
 
