@@ -25,4 +25,47 @@
           dataType : 'script'
         });
   .span6
-    %h2 Stack Rankings
+    %h2
+      Stack Rankings
+      %a.carousel-control.left{"data-slide" => "prev", :href => "#stack-rankings"} ‹
+      %a.carousel-control.right{"data-slide" => "next", :href => "#stack-rankings"} ›
+    #stack-rankings.carousel.slide{data: {interval: 'false'}}
+
+      .carousel-inner
+        .item.active
+          1. Skill Level/Technical Ability
+          How difficult and valuable are the kinds of problems
+          you solve? How important/critical of a problem can you
+          be given? Are you uniquely capable (in the company?
+          industry?) of solving a certain class of problem, delivering a certain type of art asset, contributing to design,
+          writing, or music, etc.?
+        .item
+          2. Productivity/Output
+          How much shippable (not necessarily shipped to outside
+          customers), valuable, finished work did you get done?
+          Working a lot of hours is generally not related to productivity and, after a certain point, indicates inefficiency.
+          It is more valuable if you are able to maintain a sensible
+          work/life balance and use your time in the office efficiently, rather than working around the clock.
+        .item
+          3. Group Contribution
+          How much do you contribute to studio process, hiring,
+          integrating people into the team, improving workflow,
+          amplifying your colleagues, or writing tools used by
+          others? Generally, being a group contributor means
+          that you are making a tradeoff versus an individual
+          contribution. Stepping up and acting in a leadership
+          role can be good for your group contribution score,
+          but being a leader does not impart or guarantee a
+          higher stack rank. It is just a role that people adopt
+          from time to time.
+        .item
+          4. Product Contribution
+          How much do you contribute at a larger scope than your
+          core skill? How much of your work matters to the product? How much did you influence correct prioritization
+          of work or resource trade-offs by others? Are you good
+          at predicting how customers are going to react to decisions we’re making? Things like being a good playtester
+          or bug finder during the shipping cycle would fall into
+          this category.
+
+      / Carousel nav
+

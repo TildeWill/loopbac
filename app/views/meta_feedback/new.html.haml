@@ -1,35 +1,13 @@
 - if @meta_feedback
   = simple_form_for @meta_feedback, remote: true do |f|
     = f.hidden_field :feedback_id
+    - response_options = ["Strongly Disagree", 1] , ["Disagree", 2], ["Neutral", 3], ["Agree", 4], ["Strongly Agree", 5]
     %p= @meta_feedback.feedback.content
-    %p Do you think this feedback is...
-    %table
-      %thead
-        %tr
-          %th
-          %th
-            .slanted-label Strongly Disagree
-          %th
-            .slanted-label Disagree
-          %th
-            .slanted-label Neutral
-          %th
-            .slanted-label Agree
-          %th
-            .slanted-label Strongly Agree
-      %tbody
-        %tr
-          %td.text-right ...specific
-          - (1..5).each do |i|
-            %td= f.radio_button(:specificity_score, i)
-        %tr
-          %td.text-right ...actionable
-          - (1..5).each do |i|
-            %td= f.radio_button(:actionability_score, i)
-        %tr
-          %td.text-right ...kind
-          - (1..5).each do |i|
-            %td= f.radio_button(:kindness_score, i)
-    %div.text-right= f.submit
+    %p
+      Do you think this feedback is...
+    %p= f.input(:specificity_score, collection: response_options, prompt: "Select one...", label: "...specific")
+    %p= f.input(:actionability_score, collection: response_options, prompt: "Select one...", label: "...actionable")
+    %p= f.input(:kindness_score, collection: response_options, prompt: "Select one...", label: "...kind")
+    %p= f.submit
 - else
   There is no feedback available for you to review. Check back soon!
