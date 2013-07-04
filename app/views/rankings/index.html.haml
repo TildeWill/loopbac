@@ -1,3 +1,24 @@
+:css
+  #sorted-rankings, #unsorted-rankings {
+    list-style-type: none;
+    margin: 0;
+    padding: 0 0 2.5em;
+    float: left;
+  }
+
+  #sorted-rankings {
+    margin-right: 10px;
+    border: 1px solid black;
+    min-height: 100px;
+    width: 50%;
+    display: inline-block;
+  }
+
+  #sorted-rankings li, #unsorted-rankings li {
+    margin: 0 5px 5px 5px;
+    padding: 5px;
+    font-size: 1.2em;
+  }
 #stack-rankings.carousel.slide{data: {interval: 'false'}}
   .carousel-inner
     .item.active
@@ -7,9 +28,17 @@
       be given? Are you uniquely capable (in the company?
       industry?) of solving a certain class of problem, delivering a certain type of art asset, contributing to design,
       writing, or music, etc.?
-      %ul#rankings{data: {update_url: sort_rankings_url}}
-        - @rankings.each do |ranking|
-          = content_tag_for :li, ranking do
+      %p.h4 Sorted
+      %ul#sorted-rankings.skill-list{data: {update_url: sort_rankings_url}}
+        -#%li Sample
+        - @rankings.where('position IS NOT NULL').each do |ranking|
+          = content_tag_for :li, ranking, class: "ui-state-default" do
+            = link_to(h(ranking.subject.name), ranking)
+
+      %p.h4 Unsorted
+      %ul#unsorted-rankings.skill-list{data: {update_url: sort_rankings_url}}
+        - @rankings.where('position IS NULL').each do |ranking|
+          = content_tag_for :li, ranking, class: "ui-state-default" do
             = link_to(h(ranking.subject.name), ranking)
     .item
       2. Productivity/Output
@@ -42,11 +71,18 @@
 
 :javascript
   $(function() {
-    $('#rankings').sortable({
-        axis: "y",
-        cursor: "move",
-        update: function( event, ui ) {
-              $.post($(this).data('update-url'), $(this).sortable('serialize'));
-        }
-      });
+    $('#sorted-rankings').sortable({
+      //axis: "y",
+      cursor: "move",
+      update: function( event, ui ) {
+        $.post($(this).data('update-url'), $(this).sortable('serialize'));
+      },
+      connectWith: ".skill-list"
+    });
+
+    $('#unsorted-rankings').sortable({
+      //axis: "y",
+      cursor: "move",
+      connectWith: ".skill-list"
+    });
   })

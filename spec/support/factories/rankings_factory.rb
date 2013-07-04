@@ -4,7 +4,7 @@ FactoryGirl.define do
   factory :ranking do
     author
     subject
-    position 1
+    position nil
     rank_category
   end
 end
