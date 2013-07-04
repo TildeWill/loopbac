@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130625150902) do
+ActiveRecord::Schema.define(:version => 20130703034427) do
 
   create_table "feedback", :force => true do |t|
     t.integer  "subject_id"
@@ -30,6 +30,23 @@ ActiveRecord::Schema.define(:version => 20130625150902) do
     t.integer  "specificity_score"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+  end
+
+  create_table "rank_categories", :force => true do |t|
+    t.integer  "position"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "rankings", :force => true do |t|
+    t.integer  "author_id"
+    t.integer  "subject_id"
+    t.integer  "position"
+    t.integer  "rank_category_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "sessions", :force => true do |t|

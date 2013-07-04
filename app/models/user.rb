@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 
   has_many :written_feedback, class_name: "Feedback", foreign_key: "author_id"
   has_many :received_feedback, class_name: "Feedback", foreign_key: "subject_id"
+  has_many :rankings, class_name: "Ranking", foreign_key: "author_id"
 
   def image_url(size = 32)
     "http://profiles.google.com/s2/photos/profile/me?sz=#{size}"
