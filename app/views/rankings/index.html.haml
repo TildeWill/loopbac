@@ -3,14 +3,14 @@
     list-style-type: none;
     margin: 0;
     padding: 0 0 2.5em;
-    float: left;
+    width: 100%;
   }
 
   #sorted-rankings {
-    margin-right: 10px;
     border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px 0;
     min-height: 100px;
-    width: 50%;
     display: inline-block;
   }
 
@@ -19,27 +19,35 @@
     padding: 5px;
     font-size: 1.2em;
   }
+  .sortable-list {
+    float: left;
+    width: 45%;
+    margin-right: 20px;
+  }
 #stack-rankings.carousel.slide{data: {interval: 'false'}}
   .carousel-inner
     .item.active
-      1. Skill Level/Technical Ability
-      How difficult and valuable are the kinds of problems
-      you solve? How important/critical of a problem can you
-      be given? Are you uniquely capable (in the company?
-      industry?) of solving a certain class of problem, delivering a certain type of art asset, contributing to design,
-      writing, or music, etc.?
-      %p.h4 Sorted
-      %ul#sorted-rankings.skill-list{data: {update_url: sort_rankings_url}}
-        -#%li Sample
-        - @rankings.where('position IS NOT NULL').each do |ranking|
-          = content_tag_for :li, ranking, class: "ui-state-default" do
-            = link_to(h(ranking.subject.name), ranking)
+      %p
+        %strong 1. Skill Level/Technical Ability
+      %p
+        How difficult and valuable are the kinds of problems
+        you solve? How important/critical of a problem can you
+        be given? Are you uniquely capable (in the company?
+        industry?) of solving a certain class of problem, delivering a certain type of art asset, contributing to design,
+        writing, or music, etc.?
+      .sortable-list
+        %p.h4 Sorted
+        %ul#sorted-rankings.skill-list{data: {update_url: sort_rankings_url}}
+          - @rankings.where('position IS NOT NULL').each do |ranking|
+            = content_tag_for :li, ranking, class: "ui-state-default" do
+              = link_to(h(ranking.subject.name), ranking)
 
-      %p.h4 Unsorted
-      %ul#unsorted-rankings.skill-list{data: {update_url: sort_rankings_url}}
-        - @rankings.where('position IS NULL').each do |ranking|
-          = content_tag_for :li, ranking, class: "ui-state-default" do
-            = link_to(h(ranking.subject.name), ranking)
+      .sortable-list
+        %p.h4 Unsorted
+        %ul#unsorted-rankings.skill-list{data: {update_url: sort_rankings_url}}
+          - @rankings.where('position IS NULL').each do |ranking|
+            = content_tag_for :li, ranking, class: "ui-state-default" do
+              = link_to(h(ranking.subject.name), ranking)
     .item
       2. Productivity/Output
       How much shippable (not necessarily shipped to outside
@@ -72,16 +80,14 @@
 :javascript
   $(function() {
     $('#sorted-rankings').sortable({
-      //axis: "y",
+      axis: "y",
       cursor: "move",
       update: function( event, ui ) {
         $.post($(this).data('update-url'), $(this).sortable('serialize'));
       },
-      connectWith: ".skill-list"
     });
 
     $('#unsorted-rankings').sortable({
-      //axis: "y",
       cursor: "move",
       connectWith: ".skill-list"
     });
