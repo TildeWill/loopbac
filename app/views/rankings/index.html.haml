@@ -42,7 +42,7 @@
 
         .sortable-list
           %p.h4 Unsorted
-          %ul#unsorted-rankings.skill-list{data: {update_url: sort_rankings_url}}
+          %ul#unsorted-rankings.skill-list
             - category.rankings.where(author_id: current_user.id).where('position IS NULL').each do |ranking|
               = content_tag_for :li, ranking, class: "ui-state-default" do
                 = ranking.subject.name

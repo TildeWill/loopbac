@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 ruby "2.0.0"
 
-gem 'acts_as_list'
 gem 'bootstrap-sass'
 gem 'draper'
 gem 'haml'
