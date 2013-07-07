@@ -1,10 +1,10 @@
 class SessionsController < ApplicationController
   skip_before_filter :authenticate_user!, only: :create
-  skip_before_filter :check_for_coach, only: :create
+  skip_filter :scope_current_tenant, only: :create
 
   def create
     auth = request.env["omniauth.auth"]
-    user = User.find_by_uid(auth["uid"]) || User.create_with_omniauth(auth)
+    user = User.unscoped.find_by_uid(auth["uid"]) || User.create_with_omniauth(auth)
     session[:user_id] = user.id
 
     ensure_all_domain_users_exists

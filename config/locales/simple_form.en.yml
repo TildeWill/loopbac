@@ -19,9 +19,6 @@ en:
       simple_feedback:
         new:
           subject_id: 'Who is your feedback about?'
-      coach_relationship:
-        new:
-          coach_id: "Who is your coach?"
 
   helpers:
     submit:
@@ -29,8 +26,6 @@ en:
         create: 'Save'
       simple_feedback:
         create: 'Send Feedback'
-      coach_relationship:
-        create: 'Set My Coach'
 
 #    hints:
 #       defaults:

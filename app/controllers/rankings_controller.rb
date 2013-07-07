@@ -1,6 +1,6 @@
 class RankingsController < ApplicationController
   def index
-    @rankings = current_user.rankings.order(:position)
+    @rank_categories = RankCategory.order(:position)
   end
 
   def sort

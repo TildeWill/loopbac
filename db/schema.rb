@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130703034427) do
+ActiveRecord::Schema.define(:version => 20130706211925) do
 
   create_table "feedback", :force => true do |t|
     t.integer  "subject_id"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20130703034427) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "state"
+    t.integer  "tenant_id"
   end
 
   create_table "meta_feedback", :force => true do |t|
@@ -30,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20130703034427) do
     t.integer  "specificity_score"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.integer  "tenant_id"
   end
 
   create_table "rank_categories", :force => true do |t|
@@ -38,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20130703034427) do
     t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "tenant_id"
   end
 
   create_table "rankings", :force => true do |t|
@@ -47,6 +50,7 @@ ActiveRecord::Schema.define(:version => 20130703034427) do
     t.integer  "rank_category_id"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.integer  "tenant_id"
   end
 
   create_table "sessions", :force => true do |t|
@@ -59,6 +63,12 @@ ActiveRecord::Schema.define(:version => 20130703034427) do
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
+  create_table "tenants", :force => true do |t|
+    t.string   "domain"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "email",         :default => "", :null => false
     t.datetime "created_at",                    :null => false
@@ -70,9 +80,7 @@ ActiveRecord::Schema.define(:version => 20130703034427) do
     t.string   "uid"
     t.string   "oauth2_token"
     t.string   "refresh_token"
-    t.integer  "coach_id"
+    t.integer  "tenant_id"
   end
-
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
 
 end

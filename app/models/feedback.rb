@@ -1,7 +1,10 @@
 class Feedback < ActiveRecord::Base
   belongs_to :subject, class_name: User
   belongs_to :author, class_name: User
+  belongs_to :tenant
   has_many :meta_feedback
+
+  default_scope { where(tenant_id: Tenant.current_id) }
 
   def self.can_review(user)
     where("subject_id <> ?", user.id).

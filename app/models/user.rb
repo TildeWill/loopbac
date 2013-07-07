@@ -1,11 +1,12 @@
 class User < ActiveRecord::Base
-
-  attr_accessible :email, :first_name, :last_name,
-                  :name, :image_url, :uid
-
   has_many :written_feedback, class_name: "Feedback", foreign_key: "author_id"
   has_many :received_feedback, class_name: "Feedback", foreign_key: "subject_id"
   has_many :rankings, class_name: "Ranking", foreign_key: "author_id"
+  belongs_to :tenant
+
+  validates_uniqueness_of :email, scope: :tenant_id
+
+  default_scope { where(tenant_id: Tenant.current_id) }
 
   def image_url(size = 32)
     "http://profiles.google.com/s2/photos/profile/me?sz=#{size}"
@@ -26,6 +27,7 @@ class User < ActiveRecord::Base
       user.last_name = auth["info"]["last_name"]
       user.name = auth["info"]["name"]
       user.email = auth["info"]["email"]
+      user.tenant_id = Tenant.find_or_create_by_domain(user.domain).id
     end
   end
 end
