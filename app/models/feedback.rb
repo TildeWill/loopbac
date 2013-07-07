@@ -30,25 +30,31 @@ class Feedback < ActiveRecord::Base
     event :reject do
       transition :in_review => :rejected
     end
-
-    after_transition(on: :approve) do |feedback, _|
-      if Feedback.with_state(:approved).where(subject_id: feedback.subject_id, author_id: feedback.author_id).count >= MetaFeedback::FEEDBACK_FOR_RANK
-        RankCategory.all.each do |category|
-          category.rankings.find_or_create_by_author_id_and_subject_id(feedback.author_id, feedback.subject_id)
-        end
-      end
-    end
   end
 
   def review_for_release
     if positive_feedback_count() >= MetaFeedback::META_FEEDBACK_FOR_RELEASE
       approve
+      FeedbackMailer.feedback_approved(feedback).deliver
     elsif negative_feedback_count() >= MetaFeedback::META_FEEDBACK_FOR_RELEASE
       reject
     end
   end
 
+  def review_for_ranking
+    if approved_feedback_about_subject.count >= MetaFeedback::FEEDBACK_FOR_RANK
+      RankCategory.all.each do |category|
+        category.rankings.find_or_create_by_author_id_and_subject_id(self.author_id, self.subject_id)
+      end
+      #RankingMailer.new_rankiing_available(feedback).deliver
+    end
+  end
+
   private
+  def approved_feedback_about_subject
+    Feedback.with_state(:approved).
+      where(subject_id: self.subject_id, author_id: self.author_id)
+  end
 
   def negative_feedback_count
     meta_feedback.select { |mf| mf.kindness_score <= MetaFeedback::DISAGREE }.count

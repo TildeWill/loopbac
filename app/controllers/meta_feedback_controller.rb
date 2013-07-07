@@ -9,6 +9,7 @@ class MetaFeedbackController < ApplicationController
     @meta_feedback.author = current_user
     @meta_feedback.save
     @meta_feedback.feedback.review_for_release
+    @meta_feedback.feedback.review_for_ranking
     respond_with @meta_feedback
   end
 
