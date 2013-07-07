@@ -1,6 +1,25 @@
 require 'spec_helper'
 
 describe Feedback do
+  describe "#approve" do
+    context "when the feedback is the third approved for the same subject" do
+      let(:current_user) { create(:user) }
+      let(:subject) { create(:user) }
+
+      before do
+        create_list(:rank_category, 2)
+        2.times do
+          create(:feedback, subject: subject, author: current_user).approve
+        end
+      end
+      it "creates a ranking in each category" do
+        expect {
+          create(:feedback, subject: subject, author: current_user).approve
+        }.to change(Ranking, :count).by(2)
+      end
+    end
+  end
+
   describe ".can_review" do
     let(:current_user) { create(:user) }
     let(:reviewers) { create(:user, 2) }

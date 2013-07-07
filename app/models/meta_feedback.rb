@@ -7,4 +7,6 @@ class MetaFeedback < ActiveRecord::Base
 
   DISAGREE = 2
   AGREE = 4
+  META_FEEDBACK_FOR_RELEASE = 2
+  FEEDBACK_FOR_RANK = 3
 end

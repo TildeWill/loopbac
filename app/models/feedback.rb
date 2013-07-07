@@ -30,12 +30,20 @@ class Feedback < ActiveRecord::Base
     event :reject do
       transition :in_review => :rejected
     end
+
+    after_transition(on: :approve) do |feedback, _|
+      if Feedback.with_state(:approved).where(subject_id: feedback.subject_id, author_id: feedback.author_id).count >= MetaFeedback::FEEDBACK_FOR_RANK
+        RankCategory.all.each do |category|
+          category.rankings.find_or_create_by_author_id_and_subject_id(feedback.author_id, feedback.subject_id)
+        end
+      end
+    end
   end
 
   def review_for_release
-    if positive_feedback_count() >= 2
+    if positive_feedback_count() >= MetaFeedback::META_FEEDBACK_FOR_RELEASE
       approve
-    elsif negative_feedback_count() >= 2
+    elsif negative_feedback_count() >= MetaFeedback::META_FEEDBACK_FOR_RELEASE
       reject
     end
   end

@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :tenant do
-    doamin { Faker::Internet.domain_name }
+    domain { Faker::Internet.domain_name }
   end
 end
