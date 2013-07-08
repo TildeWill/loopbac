@@ -5,5 +5,6 @@ FactoryGirl.define do
     position 1
     title Faker::Lorem.word
     description Faker::Lorem.paragraph
+    tenant { Tenant.first_or_create }
   end
 end

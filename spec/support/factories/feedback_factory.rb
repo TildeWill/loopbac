@@ -6,5 +6,6 @@ FactoryGirl.define do
     author
     content { Faker::Lorem.paragraph}
     state :in_review
+    tenant { Tenant.first_or_create }
   end
 end

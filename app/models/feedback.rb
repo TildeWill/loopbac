@@ -8,10 +8,10 @@ class Feedback < ActiveRecord::Base
 
   def self.can_review(user)
     where("subject_id <> ?", user.id).
-    where("feedback.author_id <> ?", user.id).
-    joins("LEFT OUTER JOIN meta_feedback ON feedback.id = meta_feedback.feedback_id AND meta_feedback.author_id = #{user.id}").
-    where('meta_feedback.feedback_id IS NULL').
-    with_state(:in_review)
+      where("feedback.author_id <> ?", user.id).
+      joins("LEFT OUTER JOIN meta_feedback ON feedback.id = meta_feedback.feedback_id AND meta_feedback.author_id = #{user.id}").
+      where('meta_feedback.feedback_id IS NULL').
+      with_state(:in_review)
   end
 
   state_machine :initial => :new do
@@ -35,7 +35,7 @@ class Feedback < ActiveRecord::Base
   def review_for_release
     if positive_feedback_count() >= MetaFeedback::META_FEEDBACK_FOR_RELEASE
       approve
-      FeedbackMailer.feedback_approved(feedback).deliver
+      FeedbackMailer.feedback_approved(self).deliver
     elsif negative_feedback_count() >= MetaFeedback::META_FEEDBACK_FOR_RELEASE
       reject
     end
@@ -43,17 +43,29 @@ class Feedback < ActiveRecord::Base
 
   def review_for_ranking
     if approved_feedback_about_subject.count >= MetaFeedback::FEEDBACK_FOR_RANK
+      new_rankings = false
       RankCategory.all.each do |category|
-        category.rankings.find_or_create_by_author_id_and_subject_id(self.author_id, self.subject_id)
+        ranking = Ranking.where(author_id: self.author_id, subject_id: self.subject_id, rank_category_id: category.id)
+        unless ranking.present?
+          Ranking.create(
+            author_id: self.author_id,
+            subject_id: self.subject_id,
+            author: self.author,
+            rank_category: category
+          )
+          new_rankings = true
+        end
       end
-      #RankingMailer.new_rankiing_available(feedback).deliver
+
+      if new_rankings
+        RankingMailer.new_ranking_available(self).deliver
+      end
     end
   end
 
   private
   def approved_feedback_about_subject
-    Feedback.with_state(:approved).
-      where(subject_id: self.subject_id, author_id: self.author_id)
+    Feedback.with_state(:approved).where(subject_id: self.subject_id, author_id: self.author_id)
   end
 
   def negative_feedback_count

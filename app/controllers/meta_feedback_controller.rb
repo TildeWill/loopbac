@@ -7,6 +7,7 @@ class MetaFeedbackController < ApplicationController
   def create
     @meta_feedback = MetaFeedback.new(meta_feedback_params)
     @meta_feedback.author = current_user
+    @meta_feedback.tenant = current_user.tenant
     @meta_feedback.save
     @meta_feedback.feedback.review_for_release
     @meta_feedback.feedback.review_for_ranking

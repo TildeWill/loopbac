@@ -6,5 +6,6 @@ FactoryGirl.define do
     subject
     position nil
     rank_category
+    tenant { Tenant.first_or_create }
   end
 end
