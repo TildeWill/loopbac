@@ -4,6 +4,10 @@ Loopbac::Application.routes.draw do
   resources :rankings do
     post 'sort', on: :collection
   end
+
+  namespace :admin do
+    resource :settings, only: [:edit, :update]
+  end
   match "/auth/:provider/callback" => "sessions#create"
   match "/signout" => "sessions#destroy", :as => :signout
 

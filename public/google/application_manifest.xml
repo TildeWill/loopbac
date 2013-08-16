@@ -7,7 +7,7 @@
     <!--<Link rel="setup" href="http://www.loopb.ac/google/setup?domain=${DOMAIN_NAME}"/>-->
 
     <!-- URL for application configuration, accessed from the app settings page in the control panel -->
-    <Link rel="manage" href="http://www.loopb.ac/google/admin?domain=${DOMAIN_NAME}"/>
+    <Link rel="manage" href="https://app.loopb.ac/admin/settings/edit?domain=${DOMAIN_NAME}"/>
 
     <!-- URL explaining how customers get support. -->
     <Link rel="support" href="http://www.loopb.ac/google/support"/>
