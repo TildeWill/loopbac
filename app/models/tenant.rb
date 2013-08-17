@@ -12,5 +12,6 @@ class Tenant < ActiveRecord::Base
   def self.current_id
     id = Thread.current[:tenant_id]
     id ||= Tenant.first.id if Rails.env.development? && id.nil?
+    id
   end
 end

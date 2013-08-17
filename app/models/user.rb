@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   belongs_to :tenant
 
   validates_uniqueness_of :email, scope: :tenant_id
+  validates_presence_of :tenant_id, :email, :admin
 
   default_scope { where(tenant_id: Tenant.current_id) }
 
@@ -31,7 +32,7 @@ class User < ActiveRecord::Base
       user.last_name = auth["info"]["last_name"]
       user.name = auth["info"]["name"]
       user.email = auth["info"]["email"]
-      user.tenant_id = Tenant.find_or_create_by_domain(user.domain).id
+      user.tenant_id = Tenant.where(domain: user.domain).first_or_create.id
       google_user = Google::User.find(user.domain, user.login).first
       user.admin = google_user.admin?
     end
