@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130706211925) do
+ActiveRecord::Schema.define(:version => 20130817194213) do
+
+  create_table "contestants", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "match_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "feedback", :force => true do |t|
     t.integer  "subject_id"
@@ -23,6 +30,14 @@ ActiveRecord::Schema.define(:version => 20130706211925) do
     t.integer  "tenant_id"
   end
 
+  create_table "matches", :force => true do |t|
+    t.integer  "judge_id"
+    t.integer  "winner_id"
+    t.datetime "judged_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "meta_feedback", :force => true do |t|
     t.integer  "author_id"
     t.integer  "feedback_id"
@@ -31,25 +46,6 @@ ActiveRecord::Schema.define(:version => 20130706211925) do
     t.integer  "specificity_score"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
-    t.integer  "tenant_id"
-  end
-
-  create_table "rank_categories", :force => true do |t|
-    t.integer  "position"
-    t.string   "title"
-    t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.integer  "tenant_id"
-  end
-
-  create_table "rankings", :force => true do |t|
-    t.integer  "author_id"
-    t.integer  "subject_id"
-    t.integer  "position"
-    t.integer  "rank_category_id"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
     t.integer  "tenant_id"
   end
 
@@ -81,6 +77,7 @@ ActiveRecord::Schema.define(:version => 20130706211925) do
     t.string   "oauth2_token"
     t.string   "refresh_token"
     t.integer  "tenant_id"
+    t.boolean  "admin"
   end
 
 end

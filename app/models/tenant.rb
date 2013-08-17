@@ -10,6 +10,7 @@ class Tenant < ActiveRecord::Base
   end
 
   def self.current_id
-    Thread.current[:tenant_id]
+    id = Thread.current[:tenant_id]
+    id ||= Tenant.first.id if Rails.env.development? && id.nil?
   end
 end

@@ -21,12 +21,10 @@ class ApplicationController < ActionController::Base
 
   def current_user
     @current_user ||= User.unscoped.find_by_id(session[:user_id]) if user_signed_in?
-    #@current_user.admin = false
-    #@current_user
   end
 
   def current_users
-    User.scoped.decorate
+    User.scoped
   end
 
   def user_signed_in?

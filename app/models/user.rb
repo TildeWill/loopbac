@@ -8,11 +8,6 @@ class User < ActiveRecord::Base
 
   default_scope { where(tenant_id: Tenant.current_id) }
 
-  def after_initialize
-    @admin = true #google_user.admin?
-    #raise "ZZZZZZZZZZZZZZZ"
-  end
-
   def image_url(size = 32)
     "http://profiles.google.com/s2/photos/profile/me?sz=#{size}"
   end
@@ -21,12 +16,8 @@ class User < ActiveRecord::Base
     email.split("@").last
   end
 
-  def admin?
-    @admin
-  end
-
-  def admin=(value)
-    @admin = value
+  def to_autocomplete_json
+    {value: id, label: "#{name} (#{email})", icon: "/photos/#{login}"}.to_json
   end
 
   def login
@@ -41,6 +32,8 @@ class User < ActiveRecord::Base
       user.name = auth["info"]["name"]
       user.email = auth["info"]["email"]
       user.tenant_id = Tenant.find_or_create_by_domain(user.domain).id
+      google_user = Google::User.find(user.domain, user.login).first
+      user.admin = google_user.admin?
     end
   end
 end
