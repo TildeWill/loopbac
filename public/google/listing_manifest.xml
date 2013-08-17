@@ -16,17 +16,28 @@
            your shopping page as to what sort of purchase is being requested.
     -->
     <SubListing>
-      <DisplayName>Free Edition</DisplayName>
+      <DisplayName>Free Trial</DisplayName>
       <EditionId>free</EditionId>
       <PaymentModel>FREE</PaymentModel>
       <SeatCount>5</SeatCount>
-      <PurchaseUrl>http://www.loopb.ac/google/purchase?edition=free</PurchaseUrl>
     </SubListing>
     <SubListing>
-      <DisplayName>Pro Edition</DisplayName>
-      <EditionId>pro</EditionId>
+      <DisplayName>Feedback Frenzy $5/month</DisplayName>
+      <EditionId>feedback-frenzy</EditionId>
       <PaymentModel>PAID</PaymentModel>
-      <PurchaseUrl>http://www.loopb.ac/google/purchase?edition=pro</PurchaseUrl>
+      <PurchaseUrl>http://app.loopb.ac/purchase?edition=feedback-frenzy</PurchaseUrl>
+    </SubListing>
+    <SubListing>
+      <DisplayName>Trusted Mentors $10/month</DisplayName>
+      <EditionId>explicit-mentors</EditionId>
+      <PaymentModel>PAID</PaymentModel>
+      <PurchaseUrl>http://app.loopb.ac/purchase?edition=trusted-mentors</PurchaseUrl>
+    </SubListing>
+    <SubListing>
+      <DisplayName>Manager Extravaganza $20/month</DisplayName>
+      <EditionId>micro-managers</EditionId>
+      <PaymentModel>PAID</PaymentModel>
+      <PurchaseUrl>http://app.loopb.ac/purchase?edition=micro-managers</PurchaseUrl>
     </SubListing>
   </SubListings>
   <Merchants>
