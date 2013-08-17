@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
-  has_many :written_feedback, class_name: "Feedback", foreign_key: "author_id"
-  has_many :received_feedback, class_name: "Feedback", foreign_key: "subject_id"
-  has_many :rankings, class_name: "Ranking", foreign_key: "author_id"
+  has_many :written_feedback, class_name: "Feedback", foreign_key: "author_id", dependent: :destroy
+  has_many :received_feedback, class_name: "Feedback", foreign_key: "subject_id", dependent: :destroy
+  has_many :rankings, class_name: "Ranking", foreign_key: "author_id", dependent: :destroy
   belongs_to :tenant
 
   validates_uniqueness_of :email, scope: :tenant_id

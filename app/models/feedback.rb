@@ -2,7 +2,7 @@ class Feedback < ActiveRecord::Base
   belongs_to :subject, class_name: User
   belongs_to :author, class_name: User
   belongs_to :tenant
-  has_many :meta_feedback
+  has_many :meta_feedback, dependent: :destroy
 
   default_scope { where(tenant_id: Tenant.current_id) }
 

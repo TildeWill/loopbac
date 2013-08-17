@@ -1,9 +1,9 @@
 class Tenant < ActiveRecord::Base
-  has_many :users
-  has_many :feedback
-  has_many :meta_feedback
-  has_many :rankings
-  has_many :rank_categories
+  has_many :users, dependent: :destroy
+  has_many :feedback, dependent: :destroy
+  has_many :meta_feedback, dependent: :destroy
+  has_many :rankings, dependent: :destroy
+  has_many :rank_categories, dependent: :destroy
 
   def self.current_id=(id)
     Thread.current[:tenant_id] = id
