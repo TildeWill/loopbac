@@ -19,6 +19,11 @@ module Google
       @first_name = options[:first_name]
       @last_name = options[:last_name]
       @domain = options[:domain]
+      @admin = options[:admin?]
+    end
+
+    def admin?
+      @admin
     end
 
     def email
@@ -35,7 +40,8 @@ module Google
       {
         :login => entry.elements["apps:login"].attribute("userName").value,
         :first_name => entry.elements["apps:name"].attribute("givenName").value,
-        :last_name => entry.elements["apps:name"].attribute("familyName").value
+        :last_name => entry.elements["apps:name"].attribute("familyName").value,
+        :admin? => entry.elements["apps:login"].attribute("admin").value == 'true',
       }
     end
   end

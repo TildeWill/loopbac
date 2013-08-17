@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 ruby "2.0.0"
 
 gem 'bootstrap-sass'
+gem "cancan"
 gem 'draper'
 gem 'haml'
 gem 'hpricot'

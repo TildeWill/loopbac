@@ -8,12 +8,25 @@ class User < ActiveRecord::Base
 
   default_scope { where(tenant_id: Tenant.current_id) }
 
+  def after_initialize
+    @admin = true #google_user.admin?
+    #raise "ZZZZZZZZZZZZZZZ"
+  end
+
   def image_url(size = 32)
     "http://profiles.google.com/s2/photos/profile/me?sz=#{size}"
   end
 
   def domain
     email.split("@").last
+  end
+
+  def admin?
+    @admin
+  end
+
+  def admin=(value)
+    @admin = value
   end
 
   def login

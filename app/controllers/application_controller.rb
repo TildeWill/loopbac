@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :current_users, :user_signed_in?
 
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, :alert => exception.message
+  end
+
   private
   def authenticate_user!
     unless user_signed_in?
@@ -17,6 +21,8 @@ class ApplicationController < ActionController::Base
 
   def current_user
     @current_user ||= User.unscoped.find_by_id(session[:user_id]) if user_signed_in?
+    #@current_user.admin = false
+    #@current_user
   end
 
   def current_users
