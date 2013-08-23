@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   belongs_to :tenant
 
   validates_uniqueness_of :email, scope: :tenant_id
-  validates_presence_of :tenant_id, :email, :admin
+  validates_presence_of :tenant_id, :email
 
   default_scope { where(tenant_id: Tenant.current_id) }
 

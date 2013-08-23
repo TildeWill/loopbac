@@ -1,0 +1,20 @@
+%h1 assign some managers
+
+= simple_form_for([:admin, @managership], remote: true, :html => { :class => 'form-inline' }) do |f|
+  = f.input :user_id, as: :contact_picker, label: false
+  = f.submit("Add Manager")
+
+%h3 Current Managers
+.manager-list
+  - @managers.each do |manager|
+    = content_tag_for(:div, manager) do
+      = render(partial: 'users/user', object: manager)
+
+:javascript
+  $(function() {
+    $(".new_managership input.contact_picker").contactPicker();
+  });
+
+%style
+  form.form-inline div.control-group { display: inline-block; }
+  form.form-inline div.control-group div.controls { display: inline-block; }
