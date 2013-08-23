@@ -29,10 +29,10 @@
     <Url>http://app.loopb.ac/auth/google_apps?domain=${DOMAIN_NAME}</Url>
     <Scope ref="userinfo.email"/>
     <Scope ref="userinfo.profile"/>
-    <Scope ref="userFeed"/>
-    <Scope ref="contactFeed"/>
+    <!--<Scope ref="userFeed"/>-->
+    <!--<Scope ref="contactFeed"/>-->
     <!--<Scope ref="profileFeed"/>-->
-    <Scope ref="photos"/>
+    <!--<Scope ref="photos"/>-->
     <!--<Scope ref="calendarFeed"/>-->
     <!--<Scope ref="googlePlus"/>-->
   </Extension>
@@ -52,35 +52,35 @@
     <Reason>This application uses profile pictures when collaborating with other members</Reason>
   </Scope>
 
-  <Scope id="profileFeed">
-    <Url>https://www.google.com/m8/feeds/profiles/</Url>
-    <Reason>This application populates autocomplete fields with a list of all users in the domain</Reason>
-  </Scope>
+  <!--<Scope id="profileFeed">-->
+    <!--<Url>https://www.google.com/m8/feeds/profiles/</Url>-->
+    <!--<Reason>This application populates autocomplete fields with a list of all users in the domain</Reason>-->
+  <!--</Scope>-->
 
-  <Scope id="photos">
-    <Url>https://www.google.com/m8/feeds/photos/</Url>
-    <Reason>This application uses profile pictures when collaborating with other members</Reason>
-  </Scope>
+  <!--<Scope id="photos">-->
+    <!--<Url>https://www.google.com/m8/feeds/photos/</Url>-->
+    <!--<Reason>This application uses profile pictures when collaborating with other members</Reason>-->
+  <!--</Scope>-->
 
-  <Scope id="userFeed">
-    <Url>https://apps-apis.google.com/a/feeds/user/#readonly</Url>
-    <Reason>Used for auto-complete functionality when working with other members</Reason>
-  </Scope>
+  <!--<Scope id="userFeed">-->
+    <!--<Url>https://apps-apis.google.com/a/feeds/user/#readonly</Url>-->
+    <!--<Reason>Used for auto-complete functionality when working with other members</Reason>-->
+  <!--</Scope>-->
 
-  <Scope id="contactFeed">
-    <Url>https://www.google.com/m8/feeds/</Url>
-    <Reason>Used for auto-complete functionality when working with other members</Reason>
-  </Scope>
+  <!--<Scope id="contactFeed">-->
+    <!--<Url>https://www.google.com/m8/feeds/</Url>-->
+    <!--<Reason>Used for auto-complete functionality when working with other members</Reason>-->
+  <!--</Scope>-->
 
-  <Scope id="googlePlus">
-    <Url>https://www.googleapis.com/auth/plus.login</Url>
-    <Reason>Used for auto-complete functionality when working with other members</Reason>
-  </Scope>
+  <!--<Scope id="googlePlus">-->
+    <!--<Url>https://www.googleapis.com/auth/plus.login</Url>-->
+    <!--<Reason>Used for auto-complete functionality when working with other members</Reason>-->
+  <!--</Scope>-->
 
-  <Scope id="calendarFeed">
-    <Url>https://www.google.com/calendar/feeds/</Url>
-    <Reason>This app displays the user's next upcoming Google Calendar appointment.</Reason>
-  </Scope>
+  <!--<Scope id="calendarFeed">-->
+    <!--<Url>https://www.google.com/calendar/feeds/</Url>-->
+    <!--<Reason>This app displays the user's next upcoming Google Calendar appointment.</Reason>-->
+  <!--</Scope>-->
 
   <Edition id="free">
     <Name>Feedback Frenzy</Name>

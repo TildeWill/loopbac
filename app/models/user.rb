@@ -1,24 +1,24 @@
 class User < ActiveRecord::Base
+  include Gravtastic
+
   has_many :written_feedback, class_name: "Feedback", foreign_key: "author_id", dependent: :destroy
   has_many :received_feedback, class_name: "Feedback", foreign_key: "subject_id", dependent: :destroy
   has_many :rankings, class_name: "Ranking", foreign_key: "author_id", dependent: :destroy
   belongs_to :tenant
+
+  gravtastic default: "mm", secure: true, size: 30
 
   validates_uniqueness_of :email, scope: :tenant_id
   validates_presence_of :tenant_id, :email
 
   default_scope { where(tenant_id: Tenant.current_id) }
 
-  def image_url(size = 32)
-    "http://profiles.google.com/s2/photos/profile/me?sz=#{size}"
-  end
-
   def domain
     email.split("@").last
   end
 
   def to_autocomplete_json
-    {value: id, label: "#{name} (#{email})", icon: "/photos/#{login}"}.to_json
+    {value: id, label: "#{name} (#{email})", gravatar_url: gravatar_url}.to_json
   end
 
   def login

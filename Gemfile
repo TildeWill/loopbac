@@ -4,6 +4,7 @@ ruby "2.0.0"
 gem 'bootstrap-sass'
 gem "cancan"
 gem 'google-api-client'
+gem 'gravtastic'
 gem 'haml'
 gem 'hpricot'
 gem 'http_logger'

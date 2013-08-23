@@ -15,7 +15,7 @@ $.fn.extend({
       }
     }).data("ui-autocomplete")._renderItem = function(ul, item) {
       return $("<li>")
-        .append("<a><img class='profile-icon' src='" + item.icon + "'/>" + item.label + "</a>")
+        .append("<a><img class='profile-icon' src='" + item.gravatar_url + "'/>" + item.label + "</a>")
         .appendTo(ul);
     };
   }
