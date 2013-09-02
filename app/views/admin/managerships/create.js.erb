@@ -1,0 +1,5 @@
+$(".new_managership").trigger("reset");
+$.ajax({
+  url: '<%= admin_managerships_path %>',
+  dataType: 'script'
+});

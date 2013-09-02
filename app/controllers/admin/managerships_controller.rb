@@ -1,15 +1,18 @@
 module Admin
   class ManagershipsController < ApplicationController
     before_filter -> { authorize! :manage, :settings }
+
+    def index
+      @managers = User.where(manages_people: true).order(:first_name, :last_name)
+    end
+
     def new
       @managership = Managership.new
-      @managers = User.where(manages_people: true).order(:first_name, :last_name)
     end
 
     def create
       @managership = Managership.new(params[:managership])
-      @managership.save
-      render nothing: true
+      respond_with(@managership.save)
     end
 
     def destroy

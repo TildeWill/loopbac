@@ -6,10 +6,11 @@
 
 %h3 Current Managers
 %ul.manager-list
-  - @managers.each do |manager|
-    = content_tag_for(:li, manager) do
-      = render(partial: 'users/user', object: manager)
-
+  :javascript
+    $.ajax({
+      url : '#{admin_managerships_path}',
+      dataType : 'script'
+    });
 :javascript
   $(function() {
     $(".new_managership input.contact_picker").contactPicker();

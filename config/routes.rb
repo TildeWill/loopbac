@@ -8,7 +8,7 @@ Loopbac::Application.routes.draw do
 
     namespace :admin do
       get 'settings/edit', to: redirect('/admin/managerships/new')
-      resources :managerships, only: [:new, :create]
+      resources :managerships, only: [:new, :create, :index]
     end
     match "/auth/:provider/callback" => "sessions#create"
     match "/signout" => "sessions#destroy", :as => :signout
