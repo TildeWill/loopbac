@@ -1,13 +1,13 @@
 %h1 assign some managers
 
-= simple_form_for([:admin, @managership], remote: true, :html => { :class => 'form-inline' }) do |f|
+= simple_form_for([:admin, @managership], remote: true, :html => { :class => 'new_managership form-inline' }) do |f|
   = f.input :user_id, as: :contact_picker, label: false
   = f.submit("Add Manager")
 
 %h3 Current Managers
-.manager-list
+%ul.manager-list
   - @managers.each do |manager|
-    = content_tag_for(:div, manager) do
+    = content_tag_for(:li, manager) do
       = render(partial: 'users/user', object: manager)
 
 :javascript

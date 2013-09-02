@@ -11,18 +11,18 @@
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     %meta{:content => "Peer feedback made simple", :name => "description"}/
   %body
-    .navbar.navbar-inverse.navbar-fixed-top
+    .navbar.navbar-static-top
       .navbar-inner
-        .container-fluid
+        .container
           = link_to(image_tag("loopbac_logo_50.png"), root_path, class: "brand")
-          .nav-collapse.collapse
-            %p.navbar-text.pull-right
-              - if user_signed_in?
-                %span.dropdown
-                  %a.navbar-link{href: "#"}
-                    = image_tag(current_user.gravatar_url, class: 'profile-icon')
-
-                  = link_to('Sign out', signout_path)
+          %p.navbar-text.pull-right
+            - if user_signed_in?
+              %span.dropdown
+                %a.navbar-link{href: "#"}
+                  = image_tag(current_user.gravatar_url, class: 'profile-icon')
+                = link_to('Sign out', signout_path)
+            - else
+              = link_to('Sign in', root_url(:subdomain => 'app'))
     .container-fluid
       .row-fluid
         .span12
