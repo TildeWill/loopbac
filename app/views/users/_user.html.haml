@@ -1,3 +1,4 @@
 = image_tag(user.gravatar_url, width: 30, height: 30)
 = user.first_name
 = user.last_name
+= link_to("&times;".html_safe, admin_managership_path(user.id), class: 'close', remote: true, method: :delete)

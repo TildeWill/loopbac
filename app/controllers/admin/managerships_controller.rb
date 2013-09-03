@@ -16,7 +16,7 @@ module Admin
     end
 
     def destroy
-      Managership.destroy(params[:user_id])
+      Managership.destroy(params[:id])
     end
   end
 end
