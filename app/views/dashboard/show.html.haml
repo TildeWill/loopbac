@@ -31,9 +31,9 @@
       %a.carousel-control.right{"data-slide" => "next", :href => "#stack-rankings"} ›
 
     .ranking-list
-      :javascript
-        $.ajax({
-          url : '#{rankings_path}',
-          dataType : 'script'
-        });
+      -#:javascript
+      -#  $.ajax({
+      -#    url : '#{rankings_path}',
+      -#    dataType : 'script'
+      -#  });
 

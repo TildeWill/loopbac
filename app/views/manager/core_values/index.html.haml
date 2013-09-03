@@ -1,0 +1,5 @@
+%ul
+  - @core_values.each do |core_value|
+    %li
+      = core_value.title
+      = link_to("Edit", edit_manager_core_value_path(core_value))

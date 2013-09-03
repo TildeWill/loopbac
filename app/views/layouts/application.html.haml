@@ -15,14 +15,18 @@
       .navbar-inner
         .container
           = link_to(image_tag("loopbac_logo_50.png"), root_path, class: "brand")
-          %p.navbar-text.pull-right
-            - if user_signed_in?
-              %span.dropdown
-                %a.navbar-link{href: "#"}
+          %ul.nav.pull-right
+            %li.dropdown
+              - if user_signed_in?
+                %a#user-menu.dropdown-toggle{data: {toggle: "dropdown"}, href: "#"}
                   = image_tag(current_user.gravatar_url, class: 'profile-icon')
-                = link_to('Sign out', signout_path)
-            - else
-              = link_to('Sign in', root_url(:subdomain => 'app'))
+                  %b.caret
+                %ul.dropdown-menu{aria_labelledby: "user-menu", role: "menu"}
+                  %li= link_to('Sign out', signout_path)
+                  %li= link_to('Set Managers', new_admin_managership_path) if can?(:manage, :managers)
+                  %li= link_to('Edit Core Values', new_manager_core_value_path) if can?(:manage, :core_values)
+              - else
+                = link_to('Sign in', root_url(:subdomain => 'app'))
     .container-fluid
       .row-fluid
         .span12
